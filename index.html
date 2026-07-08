@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digitaleurs — Bilan d'équipe 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+<style>
+  [data-p="ak"]{--accent:#3E8E63;}
+  [data-p="od"]{--accent:#4E7CB8;}
+  [data-p="time"]{--accent:#C67A3A;}
+  [data-p="tina"]{--accent:#C0587E;}
+  html[data-theme="dark"] [data-p="ak"]{--accent:#67BD90;}
+  html[data-theme="dark"] [data-p="od"]{--accent:#7FA6DC;}
+  html[data-theme="dark"] [data-p="time"]{--accent:#D88A4C;}
+  html[data-theme="dark"] [data-p="tina"]{--accent:#D98BA4;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand"><strong>DIGITALEURS</strong>&nbsp;<span data-fr>· Bilan d'équipe 2026</span><span data-en>· Team Year in Review 2026</span></div>
+    <div class="toggles">
+      <div class="lang-toggle">
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button id="btn-theme" class="theme-toggle" onclick="toggleTheme()" title="Thème">☾</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span data-fr>Janvier — Juillet 2026</span><span data-en>January — July 2026</span></div>
+    <h1 class="hero-title">
+      <span data-fr>Quatre développeurs, sept mois, <em>vingt-cinq projets</em> — le travail de l'équipe, en chiffres et en détail.</span>
+      <span data-en>Four developers, seven months, <em>twenty-five projects</em> — the team's work, in numbers and in detail.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr>Ce tableau de bord agrège les feuilles de temps quotidiennes et les 397 tickets Redmine de l'équipe. Cliquez sur une carte pour ouvrir le bilan détaillé de chacun : journal mensuel, projets dépliables, graphiques et compétences.</span>
+      <span data-en>This dashboard aggregates the team's daily timesheets and 397 Redmine tickets. Click a card to open each person's detailed review: monthly log, expandable projects, charts and skills.</span>
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">2 882h</span>
+        <span class="hero-meta-label" data-fr>Heures loggées</span><span class="hero-meta-label" data-en>Hours logged</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">397</span>
+        <span class="hero-meta-label" data-fr>Tickets Redmine</span><span class="hero-meta-label" data-en>Redmine tickets</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">92%</span>
+        <span class="hero-meta-label" data-fr>Résolus ou fermés</span><span class="hero-meta-label" data-en>Resolved or closed</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-num">25+</span>
+        <span class="hero-meta-label" data-fr>Projets couverts</span><span class="hero-meta-label" data-en>Projects covered</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title"><span data-fr>L'équipe</span><span data-en>The team</span></h2>
+      <p class="section-desc"><span data-fr>Chaque personne a sa couleur — on la retrouve sur sa page de détail et dans les graphiques comparatifs.</span><span data-en>Each person has their own color — carried through their detail page and the comparison charts.</span></p>
+    </div>
+    <div class="team-grid">
+
+      <a class="person-card" data-p="ak" href="ak.html">
+        <div class="pc-head">
+          <div class="pc-avatar">AK</div>
+          <div>
+            <div class="pc-name">GNANDA AKLESSO</div>
+            <span class="pc-role"><span data-fr>Développeur Front-End / Intégrateur</span><span data-en>Front-End Developer / Integrator</span></span>
+          </div>
+        </div>
+        <p class="pc-desc">
+          <span data-fr>Le front d'Oloid de bout en bout, 20 tickets de retours client Preziosi, le sprint Akurat d'avril, les tests Aegles en production — et la formation des stagiaires Flutter.</span>
+          <span data-en>Oloid's front-end from start to finish, 20 Preziosi client-feedback tickets, April's Akurat sprint, Aegles production testing — and the interns' Flutter training.</span>
+        </p>
+        <div class="pc-traits">
+          <div class="pc-trait"><span class="tr-label tr-best"><span data-fr>Le mieux</span><span data-en>Best at</span></span><span><span data-fr>Mener un site entier du design à la production — Oloid livré, Aegles testé et corrigé en prod (4 bugs en une journée).</span><span data-en>Taking a whole site from design to production — Oloid shipped, Aegles tested and fixed in prod (4 bugs in one day).</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-most"><span data-fr>Le plus</span><span data-en>Does most</span></span><span><span data-fr>L'intégration front : 30 tickets Oloid, 20 Preziosi, le sprint Akurat complet en une semaine.</span><span data-en>Front-end integration: 30 Oloid tickets, 20 Preziosi, the full Akurat sprint in one week.</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-least"><span data-fr>Le moins</span><span data-en>Does least</span></span><span><span data-fr>La saisie des temps : 1 ticket sur 82 avec temps réel renseigné, feuille remplie par à-coups.</span><span data-en>Time logging: 1 of 82 tickets with actual time, timesheet filled in bursts.</span></span></div>
+        </div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-num">82</span><span class="pc-stat-label">Tickets</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">≈316h</span><span class="pc-stat-label" data-fr>Sur tickets</span><span class="pc-stat-label" data-en>Ticket time</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">15+</span><span class="pc-stat-label" data-fr>Projets</span><span class="pc-stat-label" data-en>Projects</span></div>
+        </div>
+        <div class="pc-chips">
+          <span class="pc-chip">Oloid</span><span class="pc-chip">Preziosi</span><span class="pc-chip">Akurat</span><span class="pc-chip">Aegles</span><span class="pc-chip">Hoteli</span>
+        </div>
+        <span class="pc-cta"><span data-fr>Voir le bilan détaillé</span><span data-en>View the detailed review</span></span>
+      </a>
+
+      <a class="person-card" data-p="od" href="od.html">
+        <div class="pc-head">
+          <div class="pc-avatar">OD</div>
+          <div>
+            <div class="pc-name">TELOU ODED</div>
+            <span class="pc-role"><span data-fr>Développeur Backend</span><span data-en>Backend Developer</span></span>
+          </div>
+        </div>
+        <p class="pc-desc">
+          <span data-fr>L'application RH Ara (upload de documents, paie classique), toute la dynamisation back d'Oloid (20 tickets), le back d'Aegles — et la feuille de temps la plus rigoureuse : estimé vs réel sur chaque créneau.</span>
+          <span data-en>The Ara HR application (document upload, payroll), Oloid's entire back-office dynamisation (20 tickets), the Aegles back-office — and the most rigorous timesheet: estimate vs actual on every slot.</span>
+        </p>
+        <div class="pc-traits">
+          <div class="pc-trait"><span class="tr-label tr-best"><span data-fr>Le mieux</span><span data-en>Best at</span></span><span><span data-fr>Estimer juste : 86 % des créneaux tenus à l'heure ou en avance (252 sur 294 estimés).</span><span data-en>Accurate estimation: 86% of slots on time or ahead (252 of 294 estimated).</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-most"><span data-fr>Le plus</span><span data-en>Does most</span></span><span><span data-fr>La montée en compétence (≈348 h de formation tracées) puis le backend : Ara, dynamisations Oloid et Aegles.</span><span data-en>Skill-building (≈348h of tracked training) then backend work: Ara, Oloid and Aegles dynamisations.</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-least"><span data-fr>Le moins</span><span data-en>Does least</span></span><span><span data-fr>La création de tickets Redmine : 25 tickets pour 808 h loggées — le travail vit dans la feuille, pas dans Redmine.</span><span data-en>Redmine ticket creation: 25 tickets for 808 logged hours — the work lives in the sheet, not in Redmine.</span></span></div>
+        </div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-num">808h</span><span class="pc-stat-label" data-fr>Loggées</span><span class="pc-stat-label" data-en>Logged</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">25</span><span class="pc-stat-label">Tickets</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">10+</span><span class="pc-stat-label" data-fr>Projets</span><span class="pc-stat-label" data-en>Projects</span></div>
+        </div>
+        <div class="pc-chips">
+          <span class="pc-chip">Ara</span><span class="pc-chip">Oloid (back)</span><span class="pc-chip">Aegles (back)</span><span class="pc-chip">Hoteli</span><span class="pc-chip">NestJS</span>
+        </div>
+        <span class="pc-cta"><span data-fr>Voir le bilan détaillé</span><span data-en>View the detailed review</span></span>
+      </a>
+
+      <a class="person-card" data-p="time" href="time.html">
+        <div class="pc-head">
+          <div class="pc-avatar">TG</div>
+          <div>
+            <div class="pc-name">Graciano U. MATHEY-APOSSAN</div>
+            <span class="pc-role"><span data-fr>Développeur Full-Stack & DevOps · « Time »</span><span data-en>Full-Stack & DevOps Developer · “Time”</span></span>
+          </div>
+        </div>
+        <p class="pc-desc">
+          <span data-fr>Le module de comptabilité OHADA de Hoteli de bout en bout, la refonte Aegles par metaobjets, l'audit marketing Aonic (pixels, EMQ, CAPI), Odoo auto-hébergé, CI/CD Docker — et 228 tickets Redmine, le record de l'équipe.</span>
+          <span data-en>Hoteli's end-to-end OHADA accounting module, the metaobject-driven Aegles rebuild, the Aonic marketing audit (pixels, EMQ, CAPI), self-hosted Odoo, Docker CI/CD — and 228 Redmine tickets, the team record.</span>
+        </p>
+        <div class="pc-traits">
+          <div class="pc-trait"><span class="tr-label tr-best"><span data-fr>Le mieux</span><span data-en>Best at</span></span><span><span data-fr>Les systèmes de fond : module compta OHADA complet, CI/CD Docker, audit pixels — les chantiers que personne d'autre ne prend.</span><span data-en>Deep systems: full OHADA accounting module, Docker CI/CD, pixel audit — the workstreams nobody else takes.</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-most"><span data-fr>Le plus</span><span data-en>Does most</span></span><span><span data-fr>Le volume et l'étendue : 228 tickets, 20+ projets, du backend au marketing en passant par l'encadrement.</span><span data-en>Volume and breadth: 228 tickets, 20+ projects, from backend to marketing to mentoring.</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-least"><span data-fr>Le moins</span><span data-en>Does least</span></span><span><span data-fr>La saisie dans les pics d'activité : 18 % des tickets avec temps réel, avril « 100% focus » non tracé.</span><span data-en>Logging during activity peaks: 18% of tickets with actual time, the "100% focus" April untracked.</span></span></div>
+        </div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-num">714h</span><span class="pc-stat-label" data-fr>Loggées</span><span class="pc-stat-label" data-en>Logged</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">228</span><span class="pc-stat-label">Tickets</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">20+</span><span class="pc-stat-label" data-fr>Projets</span><span class="pc-stat-label" data-en>Projects</span></div>
+        </div>
+        <div class="pc-chips">
+          <span class="pc-chip">Hoteli + Compta</span><span class="pc-chip">Aegles</span><span class="pc-chip">Aonic</span><span class="pc-chip">Odoo</span><span class="pc-chip">CI/CD</span>
+        </div>
+        <span class="pc-cta"><span data-fr>Voir le bilan détaillé</span><span data-en>View the detailed review</span></span>
+      </a>
+
+      <a class="person-card" data-p="tina" href="tina.html">
+        <div class="pc-head">
+          <div class="pc-avatar">TE</div>
+          <div>
+            <div class="pc-name">Elsira E. BOUANGA-NIAMBI</div>
+            <span class="pc-role"><span data-fr>Développeuse Front-End · « Tina »</span><span data-en>Front-End Developer · “Tina”</span></span>
+          </div>
+        </div>
+        <p class="pc-desc">
+          <span data-fr>Le front d'Oloid (Hero & Header 16h, page Projects 14h), les composants lourds d'Aegles (Pricing block, Header, Academy), les retours clients Akurat, l'UAT Aonic — et la feuille de temps la plus complète : 963 heures tracées.</span>
+          <span data-en>Oloid's front-end (Hero & Header 16h, Projects page 14h), Aegles' heavy components (Pricing block, Header, Academy), Akurat client feedback, Aonic UAT — and the most complete timesheet: 963 hours tracked.</span>
+        </p>
+        <div class="pc-traits">
+          <div class="pc-trait"><span class="tr-label tr-best"><span data-fr>Le mieux</span><span data-en>Best at</span></span><span><span data-fr>La constance : la feuille de temps la plus fiable de l'équipe (121 jours, 8 h/jour) et des composants UI soignés jusqu'au pixel.</span><span data-en>Consistency: the team's most reliable timesheet (121 days, 8h/day) and UI components polished to the pixel.</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-most"><span data-fr>Le plus</span><span data-en>Does most</span></span><span><span data-fr>Les heures : 963 h loggées, record de l'équipe — portées par le front lourd (Oloid 185 h, Aegles 100 h, Akurat 110 h).</span><span data-en>Hours: 963 logged, the team record — driven by heavy front-end work (Oloid 185h, Aegles 100h, Akurat 110h).</span></span></div>
+          <div class="pc-trait"><span class="tr-label tr-least"><span data-fr>Le moins</span><span data-en>Does least</span></span><span><span data-fr>Le backend et le DevOps : une activité presque exclusivement front et cadrage.</span><span data-en>Backend and DevOps: activity almost exclusively front-end and scoping.</span></span></div>
+        </div>
+        <div class="pc-stats">
+          <div class="pc-stat"><span class="pc-stat-num">963h</span><span class="pc-stat-label" data-fr>Loggées</span><span class="pc-stat-label" data-en>Logged</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">62</span><span class="pc-stat-label">Tickets</span></div>
+          <div class="pc-stat"><span class="pc-stat-num">15+</span><span class="pc-stat-label" data-fr>Projets</span><span class="pc-stat-label" data-en>Projects</span></div>
+        </div>
+        <div class="pc-chips">
+          <span class="pc-chip">Oloid</span><span class="pc-chip">Aegles</span><span class="pc-chip">Akurat</span><span class="pc-chip">Hoteli</span><span class="pc-chip">Cagecfi</span>
+        </div>
+        <span class="pc-cta"><span data-fr>Voir le bilan détaillé</span><span data-en>View the detailed review</span></span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Pour masquer cette section : ajouter la classe "is-hidden" (ex. class="section rank-section is-hidden") -->
+  <section class="section rank-section is-hidden" id="ranking">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title"><span data-fr>Le classement — qui a le plus travaillé ?</span><span data-en>The ranking — who worked the most?</span></h2>
+      <p class="section-desc">
+        <span data-fr>Un classement sincère, établi uniquement d'après les données — avec ses limites, car on ne mesure bien que ce qu'on saisit.</span>
+        <span data-en>An honest ranking, built strictly from the data — with its limits, because you only measure well what you log.</span>
+      </p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item" data-p="tina">
+        <div class="rank-pos">1</div>
+        <div class="rank-body">
+          <span class="rank-name"><a href="tina.html">Elsira « Tina » BOUANGA-NIAMBI</a></span>
+          <span class="rank-metric">963h · 121 jours · 8,0h/j · 76% de saisie</span>
+          <p class="rank-note">
+            <span data-fr>Le plus gros volume d'heures <strong>et</strong> la donnée la plus fiable de l'équipe : son classement est le plus solide des quatre. Porté par le front lourd — Oloid 185 h, Akurat 110 h, Aegles 100 h.</span>
+            <span data-en>The largest volume of hours <strong>and</strong> the team's most reliable data: her ranking is the most solid of the four. Driven by heavy front-end work — Oloid 185h, Akurat 110h, Aegles 100h.</span>
+          </p>
+        </div>
+      </div>
+      <div class="rank-item" data-p="time">
+        <div class="rank-pos">2</div>
+        <div class="rank-body">
+          <span class="rank-name"><a href="time.html">Graciano « Time » MATHEY-APOSSAN</a></span>
+          <span class="rank-metric">714h · 228 tickets · 20+ projets</span>
+          <p class="rank-note">
+            <span data-fr>Le record de production visible : 228 tickets et l'étendue la plus large (compta OHADA, CI/CD, audit pixels). Ses heures sont sous-évaluées — l'avril « 100% focus » n'a pas été tracé. Classé par production livrée, il serait n°1.</span>
+            <span data-en>The record for visible output: 228 tickets and the widest breadth (OHADA accounting, CI/CD, pixel audit). His hours are underestimated — the "100% focus" April went untracked. Ranked by delivered output, he would be #1.</span>
+          </p>
+        </div>
+      </div>
+      <div class="rank-item" data-p="od">
+        <div class="rank-pos">3</div>
+        <div class="rank-body">
+          <span class="rank-name"><a href="od.html">TELOU ODED</a></span>
+          <span class="rank-metric">808h · 7,8h/j · 86% d'estimations tenues</span>
+          <p class="rank-note">
+            <span data-fr>808 h très fiables, mais ~43 % est de la formation plutôt que de la production client. Un énorme investissement d'apprentissage — qui paie au second semestre sur Ara, Oloid et Aegles.</span>
+            <span data-en>A very reliable 808h, but ~43% is training rather than client output. A huge learning investment — which pays off in the second half on Ara, Oloid and Aegles.</span>
+          </p>
+        </div>
+      </div>
+      <div class="rank-item" data-p="ak">
+        <div class="rank-pos">4</div>
+        <div class="rank-body">
+          <span class="rank-name"><a href="ak.html">GNANDA AKLESSO</a></span>
+          <span class="rank-metric">397h loggées · 82 tickets · ≈316h estimées</span>
+          <p class="rank-note">
+            <span data-fr>Dernier sur les chiffres, mais c'est en grande partie un artefact de saisie : 1 % des tickets avec temps réel, feuille remplie par à-coups. Ses 82 tickets et ≈316 h estimées suggèrent un volume réel bien supérieur — les données le desservent plus qu'elles ne le mesurent.</span>
+            <span data-en>Last on the numbers, but largely a logging artifact: 1% of tickets with actual time, a timesheet filled in bursts. His 82 tickets and ≈316 estimated hours suggest a much higher real volume — the data underserves him more than it measures him.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Verdict sincère :</strong> Tina et Time se partagent la tête — elle en heures documentées, lui en production livrée. Et la vraie leçon du classement : on ne mesure bien que ce qu'on saisit.</span>
+      <span data-en><strong>Honest verdict:</strong> Tina and Time share the top — she on documented hours, he on delivered output. And the ranking's real lesson: you only measure well what you log.</span>
+    </div>
+  </section>
+
+  <section class="section" id="compare">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title"><span data-fr>L'équipe en chiffres</span><span data-en>The team in numbers</span></h2>
+      <p class="section-desc">
+        <span data-fr>Comparaison des heures loggées et des tickets. Attention aux lectures rapides : les pratiques de saisie diffèrent — Ak logge peu mais porte ≈316 h de tickets estimés, Od logge tout y compris ses formations.</span>
+        <span data-en>Comparison of logged hours and tickets. Beware quick reads: logging habits differ — Ak logs little but carries ≈316h of estimated ticket time, Od logs everything including training.</span>
+      </p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par personne</span><span data-en>Hours logged per person</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTeamHours"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Tickets Redmine par personne</span><span data-en>Redmine tickets per person</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTeamTickets"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid" style="margin-top:24px;grid-template-columns:1fr;">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par mois, par personne</span><span data-en>Hours logged per month, per person</span></h3>
+        <div class="chart-wrap tall"><canvas id="chartTeamMonthly"></canvas></div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Note :</strong> chiffres extraits des feuilles de temps quotidiennes et des exports Redmine (janvier–juillet 2026). Quand un ticket n'a pas de temps passé renseigné, son temps estimé est utilisé — dans l'urgence, le travail passait souvent avant la saisie, et tout le travail n'a pas donné lieu à un ticket. Les volumes réels sont supérieurs.</span>
+      <span data-en><strong>Note:</strong> figures extracted from the daily timesheets and Redmine exports (January–July 2026). When a ticket has no logged time, its estimated time is used — under pressure, the work often came before the logging, and not all work resulted in a ticket. Actual volumes are higher.</span>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span data-fr>Bilan d'équipe Digitaleurs — généré à partir des feuilles de temps et du suivi Redmine, janvier–juillet 2026.</span>
+  <span data-en>Digitaleurs team review — generated from the timesheets and Redmine tracking, January–July 2026.</span>
+</footer>
+
+<script>
+const TEAM = {
+  people: [
+    {key:'ak',   name:'Aklesso',  hours:397, tickets:82,
+     monthly:[70,58,13,139,94,23,1]},
+    {key:'od',   name:'Oded',     hours:808, tickets:25,
+     monthly:[123,123,79,151,129,170,34]},
+    {key:'time', name:'Time',     hours:714, tickets:228,
+     monthly:[148,133,158,73,89,94,18]},
+    {key:'tina', name:'Tina',     hours:963, tickets:62,
+     monthly:[142,155,169,157,129,178,32]}
+  ],
+  monthsFr:['Jan','Fév','Mar','Avr','Mai','Juin','Juil'],
+  monthsEn:['Jan','Feb','Mar','Apr','May','Jun','Jul']
+};
+
+function personColor(key){
+  var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var light = {ak:'#3E8E63', od:'#4E7CB8', time:'#C67A3A', tina:'#C0587E'};
+  var darkc = {ak:'#67BD90', od:'#7FA6DC', time:'#D88A4C', tina:'#D98BA4'};
+  return (dark ? darkc : light)[key];
+}
+
+registerCharts(function(){
+  if (typeof Chart === 'undefined') return;
+  var lang = currentLang();
+  var months = lang === 'fr' ? TEAM.monthsFr : TEAM.monthsEn;
+  var colors = TEAM.people.map(function(p){ return personColor(p.key); });
+  var names = TEAM.people.map(function(p){ return p.name; });
+
+  addChart(new Chart(document.getElementById('chartTeamHours').getContext('2d'), {
+    type:'bar',
+    data:{ labels:names, datasets:[{ data:TEAM.people.map(function(p){return p.hours;}), backgroundColor:colors, borderRadius:6, maxBarThickness:60 }] },
+    options: chartBaseOpts()
+  }));
+
+  addChart(new Chart(document.getElementById('chartTeamTickets').getContext('2d'), {
+    type:'bar',
+    data:{ labels:names, datasets:[{ data:TEAM.people.map(function(p){return p.tickets;}), backgroundColor:colors, borderRadius:6, maxBarThickness:60 }] },
+    options: chartBaseOpts()
+  }));
+
+  var mo = chartBaseOpts();
+  mo.plugins.legend = { display:true, position:'bottom', labels:{ boxWidth:10, padding:12, color:cssVar('--text-mute'), font:{size:11} } };
+  mo.scales.x.stacked = true;
+  mo.scales.y.stacked = true;
+  addChart(new Chart(document.getElementById('chartTeamMonthly').getContext('2d'), {
+    type:'bar',
+    data:{
+      labels:months,
+      datasets: TEAM.people.map(function(p){
+        return { label:p.name, data:p.monthly, backgroundColor:personColor(p.key), borderRadius:4, maxBarThickness:56 };
+      })
+    },
+    options: mo
+  }));
+});
+</script>
+</body>
+</html>

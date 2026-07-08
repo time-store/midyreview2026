@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr" data-person="time">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graciano Ulrich MATHEY-APOSSAN — Bilan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <a class="back-link" href="index.html"><span data-fr>← Équipe</span><span data-en>← Team</span></a>
+      G. <strong>MATHEY-APOSSAN</strong>&nbsp;<span data-fr>· Bilan 2026</span><span data-en>· Year in Review 2026</span>
+    </div>
+    <div class="toggles">
+      <div class="lang-toggle">
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button id="btn-theme" class="theme-toggle" onclick="toggleTheme()" title="Thème">☾</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span data-fr>Janvier — Juillet 2026</span><span data-en>January — July 2026</span></div>
+    <h1 class="hero-title">
+      <span data-fr>Sept mois de <em>systèmes</em> : du plan comptable OHADA au pipeline CI/CD, tout ce qui tient debout derrière les sites.</span>
+      <span data-en>Seven months of <em>systems</em>: from the OHADA chart of accounts to the CI/CD pipeline — everything standing behind the sites.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr>Graciano Ulrich MATHEY-APOSSAN (« Time ») — Développeur Full-Stack & DevOps. Ce document retrace, projet par projet, le travail accompli entre janvier et juillet 2026 chez Digitaleurs : module de comptabilité Hoteli de bout en bout, refonte Aegles par metaobjets, audit marketing Aonic, Odoo auto-hébergé, serveurs et CI/CD, et l'encadrement de deux stagiaires.</span>
+      <span data-en>Graciano Ulrich MATHEY-APOSSAN (“Time”) — Full-Stack & DevOps Developer. This document traces, project by project, the work accomplished between January and July 2026 at Digitaleurs: the end-to-end Hoteli accounting module, the metaobject-driven Aegles rebuild, the Aonic marketing audit, self-hosted Odoo, servers and CI/CD, and the mentoring of two interns.</span>
+    </p>
+    <div class="hero-meta" id="hero-meta"></div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title"><span data-fr>Vue d'ensemble</span><span data-en>Overview</span></h2>
+      <p class="section-desc">
+        <span data-fr>Répartition du temps suivi et volume de tickets traités sur les sept mois — 228 tickets Redmine, le plus gros volume de l'équipe.</span>
+        <span data-en>Distribution of tracked time and volume of tickets handled across the seven months — 228 Redmine tickets, the team's largest volume.</span>
+      </p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par mois</span><span data-en>Hours logged per month</span></h3>
+        <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition du temps par projet</span><span data-en>Time by project</span></h3>
+        <div class="chart-wrap"><canvas id="chartProjects"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tickets Redmine par projet</span><span data-en>Redmine tickets per project</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTickets"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Statut des 228 tickets</span><span data-en>Status of the 228 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartStatus"></canvas></div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Note de lecture :</strong> les heures proviennent de la feuille de suivi quotidienne. Quand un ticket Redmine n'a pas de temps passé renseigné, son <strong>temps estimé</strong> est utilisé et marqué « ≈ ». Certaines périodes très intenses (l'audit Aonic d'avril notamment — « 100% focus, pas de temps pour venir mettre les logs ») n'ont pas été tracées : les volumes réels sont <strong>supérieurs</strong> à ce qui est affiché.</span>
+      <span data-en><strong>How to read this:</strong> hours come from the daily tracking sheet. When a Redmine ticket has no logged time, its <strong>estimated time</strong> is used and flagged with "≈". Some very intense periods (notably April's Aonic audit — "100% focus, no time to fill the logs") were not tracked: actual volumes are <strong>higher</strong> than displayed.</span>
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title"><span data-fr>Le journal de l'année</span><span data-en>The year's log</span></h2>
+      <p class="section-desc"><span data-fr>Mois par mois, les chantiers ouverts et les temps forts.</span><span data-en>Month by month, the projects in motion and the highlights.</span></p>
+    </div>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title"><span data-fr>Projets en détail</span><span data-en>Projects in detail</span></h2>
+      <p class="section-desc"><span data-fr>Chaque chantier, son contexte, et les tâches marquantes issues du suivi Redmine et de la feuille de temps.</span><span data-en>Each project, its context, and notable tasks drawn from Redmine tracking and the timesheet.</span></p>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+  </section>
+
+  <section class="section" id="tickets">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title"><span data-fr>Tous les tickets Redmine</span><span data-en>All Redmine tickets</span></h2>
+      <p class="section-desc"><span data-fr>La liste complète, filtrable par projet, statut et priorité. Le temps affiché est le temps passé ; « ≈ » indique le temps estimé utilisé à défaut, « — » un ticket traité sans saisie de temps.</span><span data-en>The complete list, filterable by project, status and priority. The time shown is time spent; "≈" marks estimated time used as fallback, "—" a ticket handled without time entry.</span></p>
+    </div>
+    <div class="ticket-controls">
+      <input type="search" id="t-search" placeholder="Rechercher… / Search…">
+      <select id="t-proj"><option value="">Projet / Project</option></select>
+      <select id="t-status"><option value="">Statut / Status</option></select>
+      <select id="t-prio"><option value="">Priorité / Priority</option></select>
+      <span class="ticket-count" id="t-count"></span>
+    </div>
+    <div class="ticket-table-wrap" id="ticket-table"></div>
+  </section>
+
+  <section class="section" id="advanced">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title"><span data-fr>Statistiques avancées</span><span data-en>Advanced statistics</span></h2>
+      <p class="section-desc"><span data-fr>Rythme de travail, tickets les plus lourds, précision d'estimation, collaborations et aléas du terrain — calculés depuis la feuille de temps et les tickets. Quand une statistique n'apparaît pas ici, c'est que les données ne permettent pas de la calculer honnêtement.</span><span data-en>Work rhythm, heaviest tickets, estimation accuracy, collaborations and field hazards — computed from the timesheet and tickets. When a statistic is missing here, the data doesn't allow computing it honestly.</span></p>
+    </div>
+    <div class="stat-tiles" id="adv-tiles"></div>
+    <div class="charts-grid" style="margin-top:24px;grid-template-columns:1fr;">
+      <div class="chart-card">
+        <h3><span data-fr>Top 10 des tickets les plus lourds (« ≈ » = temps estimé)</span><span data-en>Top 10 heaviest tickets ("≈" = estimated time)</span></h3>
+        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid three" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tâches vs Bugs</span><span data-en>Tasks vs Bugs</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTracker"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition par priorité</span><span data-en>Breakdown by priority</span></h3>
+        <div class="chart-wrap short"><canvas id="chartPrio"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Estimé vs réel — 19 tickets</span><span data-en>Estimated vs actual — 19 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartEstim"></canvas></div>
+      </div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Collaborations les plus fréquentes (mentions dans la feuille de temps)</span><span data-en>Most frequent collaborations (mentions in the timesheet)</span></h3>
+      <div class="proj-chips" id="adv-collabs"></div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Aléas du terrain</span><span data-en>Field hazards</span></h3>
+      <div class="proj-chips" id="adv-incidents"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title"><span data-fr>Compétences mobilisées</span><span data-en>Skills exercised</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Backend & API</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span><span class="skill-tag">GraphQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">NestJS</span><span class="skill-tag">Swagger</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>DevOps & Infra</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span><span class="skill-tag">CI/CD GitLab</span><span class="skill-tag">Nginx</span><span class="skill-tag">Serveurs VPS</span><span class="skill-tag">Ngrok</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>ERP & Comptabilité</span><span data-en>ERP & Accounting</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Odoo</span><span class="skill-tag">Sage</span><span class="skill-tag">Plan comptable OHADA</span><span class="skill-tag">Auto-posting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Shopify</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Liquid</span><span class="skill-tag">Metaobjects</span><span class="skill-tag">Sections</span><span class="skill-tag">Hydrogen / Analytics</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Marketing & Data</span><span data-en>Marketing & Data</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">GA4 / GTM</span><span class="skill-tag">Meta CAPI & EMQ</span><span class="skill-tag">Looker Studio</span><span class="skill-tag">Pixels e-commerce</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Encadrement</span><span data-en>Mentoring</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Formation JS / Python</span><span class="skill-tag">TP GitHub</span><span class="skill-tag">Onboarding stagiaires</span><span class="skill-tag">Plans de formation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="closing">
+    <div class="closing">
+      <p>
+        <span data-fr>Des réservations groupées au grand livre comptable, des pixels Meta aux pipelines Docker — une année passée à construire ce qui ne se voit pas mais fait tout tenir.</span>
+        <span data-en>From group bookings to the general ledger, from Meta pixels to Docker pipelines — a year spent building what isn't seen but holds everything together.</span>
+      </p>
+      <div class="sign">— Graciano Ulrich MATHEY-APOSSAN</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span data-fr>Document généré à partir du suivi Redmine et de la feuille de temps, janvier–juillet 2026.</span>
+  <span data-en>Document generated from Redmine tracking and the timesheet, January–July 2026.</span>
+</footer>
+
+<script src="assets/tickets-time.js"></script>
+<script>
+const PERSON = {
+  heroMeta: [
+    {num:'714h', fr:'Heures loggées', en:'Hours logged'},
+    {num:'228', fr:'Tickets Redmine', en:'Redmine tickets'},
+    {num:'≈350h', fr:'Temps sur tickets', en:'Ticket time'},
+    {num:'20+', fr:'Projets couverts', en:'Projects covered'}
+  ],
+
+  monthly: [
+    {m:'Jan', mEn:'Jan', hours:148},
+    {m:'Fév', mEn:'Feb', hours:133},
+    {m:'Mar', mEn:'Mar', hours:158},
+    {m:'Avr', mEn:'Apr', hours:73},
+    {m:'Mai', mEn:'May', hours:89},
+    {m:'Juin', mEn:'Jun', hours:94},
+    {m:'Juil', mEn:'Jul', hours:18}
+  ],
+
+  projectHours: [
+    {name:'Hoteli (+ compta)', hours:275},
+    {name:'Points & réunions', hours:100},
+    {name:'Odoo & Ngrok', hours:79},
+    {name:'Aonic & Analytics', hours:65},
+    {name:'Aegles', hours:53},
+    {name:'TP Serveurs / CI-CD', hours:44},
+    {name:'NestJS', hours:9},
+    {name:'Autres', hours:88}
+  ],
+
+  ticketsPerProject: [
+    {proj:'Suivi & divers', n:110},
+    {proj:'Hoteli', n:92},
+    {proj:'Aegles', n:20},
+    {proj:'Aoniclife', n:4},
+    {proj:'Autres', n:2}
+  ],
+
+  statusCounts: {
+    fr:['Résolu / Fermé','En cours','Nouveau','Suspendu'],
+    en:['Resolved / Closed','In progress','New','Suspended'],
+    data:[214,8,5,1]
+  },
+
+  log: [
+    {
+      month:'Janvier', monthEn:'January',
+      note:{fr:"Démarrage sur Hoteli : réductions par pourcentage ou montant fixe, historique d'audit sur toutes les entités, intégration de pièces d'identité (Consulaire, ANID), pagination des permissions employé. Construction du site Cave à Vins (produits, services, images) et premiers TP serveurs.", en:"Kickoff on Hoteli: percentage/fixed discounts, audit trail across all entities, ID-document integration (Consular, ANID), employee permission pagination. Cave à Vins site build (products, services, images) and first server training."},
+      projects:[{n:'Hoteli', d:'~85h'},{n:'Cave à Vins', d:'~8h'},{n:'TP Serveurs', d:'~12h'},{n:'Points & estimations', d:'~25h'}]
+    },
+    {
+      month:'Février', monthEn:'February',
+      note:{fr:"Pipeline CI/CD Docker finalisé et déploiement validé (ticket de 70h de tests CI/CD, connexion SSH GitLab). Entrée en formation Odoo : fabrication, nomenclatures, contrôle qualité, création d'employés et de produits. CJET CI/CD et déploiement Odoo via Ngrok.", en:"Docker CI/CD pipeline completed and deployment validated (70h CI/CD testing ticket, GitLab SSH connection). Odoo onboarding: manufacturing, BOMs, quality control, employee and product creation. CJET CI/CD and Odoo deployment via Ngrok."},
+      projects:[{n:'TP Serveurs / CI-CD', d:'~34h'},{n:'Odoo', d:'~40h'},{n:'CJET / Ngrok', d:'~12h'}]
+    },
+    {
+      month:'Mars', monthEn:'March',
+      note:{fr:"La structure complète de réservation groupée sur Hoteli : entité, résolveurs GraphQL, factures et transactions, calculs de montants — une quinzaine de tickets. Démarrage Shopify Analytics (GA4, Google Tag, tracking d'événements) et recherche cloud GPU (Salad/Vast.ai).", en:"The full group-booking structure on Hoteli: entity, GraphQL resolvers, invoices and transactions, amount calculations — some fifteen tickets. Shopify Analytics kickoff (GA4, Google Tag, event tracking) and GPU cloud research (Salad/Vast.ai)."},
+      projects:[{n:'Hoteli', d:'~60h'},{n:'Analytics', d:'~52h'},{n:'Salad/Vast.ai', d:'~10h'}]
+    },
+    {
+      month:'Avril', monthEn:'April',
+      note:{fr:"Mois « 100% focus » : configuration SimplyBook.me et paiement Stripe (Osmose Studio), refonte Axe Capital Humain, audit Aonic complet — tests de tous les pixels (Meta, TikTok, Klaviyo, Recharge, TripleWhale…), EMQ, CAPI — apprentissage NestJS, déploiement Oloid et Navi Togo. Période si intense que les logs de temps sont partiels.", en:"The “100% focus” month: SimplyBook.me and Stripe payment setup (Osmose Studio), Axe Capital Humain rebuild, full Aonic audit — every pixel tested (Meta, TikTok, Klaviyo, Recharge, TripleWhale…), EMQ, CAPI — NestJS learning, Oloid and Navi Togo deployments. So intense the time logs are partial."},
+      projects:[{n:'Aonic (audit)', d:'~40h+'},{n:'NestJS', d:'~18h'},{n:'SimplyBookMe / Osmose', d:'~12h'},{n:'Déploiements', d:'~10h'}]
+    },
+    {
+      month:'Mai', monthEn:'May',
+      note:{fr:"Chantier majeur : module de comptabilité Hoteli de bout en bout — rôles et permissions comptables, plan comptable OHADA complet (~19 tickets de spécification), dashboard, grand livre, balance, exports Sage/Odoo, moteur d'auto-posting. En parallèle : déploiement Odoo Docker sur serveur et campagne de tests Oloid (18 tickets « Construire et tester »).", en:"Major workstream: the end-to-end Hoteli accounting module — accounting roles and permissions, full OHADA chart of accounts (~19 specification tickets), dashboard, general ledger, trial balance, Sage/Odoo exports, auto-posting engine. In parallel: Odoo Docker deployment on the server and the Oloid test campaign (18 “Build and test” tickets)."},
+      projects:[{n:'Hoteli — Compta', d:'~60h'},{n:'Odoo (Docker)', d:'~15h'},{n:'Oloid (tests)', d:'~14h'}]
+    },
+    {
+      month:'Juin', monthEn:'June',
+      note:{fr:"Refonte Aegles (structuration par sections Shopify, dynamisation par metaobjets, Academy, récupération des dynamisations perdues après push), refonte du cycle de vie complet des réservations Hoteli (avances vs cautions, prolongations, taxes, caisse — 10 tickets), correction du bug critique « aucune apparition des mouvements d'argent », onboarding de deux stagiaires (JS, TP GitHub) et études Medlogue/Pharmacie.", en:"Aegles rebuild (Shopify section structuring, metaobject dynamisation, Academy, recovery of dynamisations lost after push), full Hoteli booking lifecycle overhaul (advances vs deposits, extensions, taxes, cash register — 10 tickets), critical “no money movements appearing” bug fix, two interns onboarded (JS, GitHub exercises) and Medlogue/Pharmacy studies.", },
+      projects:[{n:'Aegles', d:'~48h'},{n:'Hoteli', d:'~18h'},{n:'Formation Jr', d:'~14h'},{n:'Aonic', d:'~8h'}]
+    },
+    {
+      month:'Juillet', monthEn:'July',
+      note:{fr:"Conception de l'application mobile Hoteli : cahier des charges mis à jour, mécanisme d'authentification des clients, évolutions d'API nécessaires, méthodologie de développement (4 tickets), self-service par QR code (V1 sans compte client, paiement au restaurant). Derniers correctifs Aegles en production (JS des sous-items de fiche produit — 5h, templates Serum/Bubble).", en:"Hoteli mobile app design: updated specification, client authentication mechanism, required API evolutions, development methodology (4 tickets), QR-code self-service (V1 without client account, payment at the restaurant). Final Aegles production fixes (product-sheet sub-item JS — 5h, Serum/Bubble templates)."},
+      projects:[{n:'Hoteli (app mobile)', d:'~16h'},{n:'Aegles', d:'~8h'},{n:'Point Mr Cc', d:'2h30'}]
+    }
+  ],
+
+  projects: [
+    {
+      tag:'01', name:'Hoteli', period:'Janvier — Juillet 2026', hours:'≈275h · 92 tickets',
+      desc:{fr:"Plateforme de gestion hôtelière complète (réception, restaurant, comptabilité) développée en GraphQL/Node/MongoDB. Le plus gros chantier de l'année : sept mois de travail continu, de la réservation simple jusqu'au module de comptabilité OHADA complet et à la conception de l'application mobile.", en:"Complete hotel management platform (front desk, restaurant, accounting) built on GraphQL/Node/MongoDB. The year's biggest workstream: seven months of continuous work, from simple bookings to the full OHADA accounting module and the mobile app design."},
+      tasks:[
+        {fr:"Réduction par pourcentage ou montant fixe (réservation)", en:"Discount by percentage or fixed amount (booking)", status:'done', date:'06/01 — 6h'},
+        {fr:"Intégration carte Consulaire et carte ANID dans les pièces d'identité", en:"Consular and ANID ID cards integrated in identity documents", status:'done', date:'06/01'},
+        {fr:"Ajustement checkout : check-in/out anticipé ou rallongé, dates originales conservées", en:"Checkout adjustment: early/late check-in/out, original dates preserved", status:'progress', date:'janvier'},
+        {fr:"Création de l'historique (audit trail) sur toutes les entités principales", en:"History / audit trail creation across all core entities", status:'done', date:'19/01'},
+        {fr:"Intégration de l'historique dans la création et modification de réservation", en:"History integration into booking creation and modification", status:'done', date:'19-21/01'},
+        {fr:"Déstockage direct dans les stocks des magasins lors des ventes", en:"Direct store-stock decrement on sales", status:'done', date:'12/01 — 7h15'},
+        {fr:"Entité Settings, entité PermissionConge, dynamisation page permission employé + pagination", en:"Settings entity, PermissionConge entity, employee permission page dynamisation + pagination", status:'done', date:'13-14/01'},
+        {fr:"Test Stats (8h), dates sur rapports de nettoyage, checkout avant date de fin (bug)", en:"Stats test (8h), cleaning report dates, checkout-before-end-date bug", status:'done', date:'20-26/01'},
+        {fr:"Création de l'entité Groupe Réservation et ses résolveurs (création, modif, suppression)", en:"Group Reservation entity and its resolvers (create, update, delete)", status:'done', date:'05-13/03'},
+        {fr:"Factures et transactions ajoutées à la réservation groupée, calculs de montants", en:"Invoices and transactions added to group bookings, amount calculations", status:'done', date:'11-17/03 — ~15h'},
+        {fr:"Nombre de chambres et types de chambre sur la réservation groupée", en:"Room count and room types on group bookings", status:'done', date:'11/03 — 2h'},
+        {fr:"Vérification d'appartenance au groupe avant modification, commandes sur le groupe", en:"Group-membership check before modification, orders on the group", status:'done', date:'16-17/03'},
+        {fr:"Création des nouveaux rôles et permissions comptables (local + API + admin)", en:"New accounting roles and permissions (local + API + admin)", status:'done', date:'18/05 — 5h'},
+        {fr:"Plan comptable OHADA complet : capital, clients, fournisseurs, TVA, personnel, caisses, mobile money (MTN, Flooz, Orange), virements internes — 14 tickets", en:"Full OHADA chart of accounts: capital, clients, suppliers, VAT, payroll, cash registers, mobile money (MTN, Flooz, Orange), internal transfers — 14 tickets", status:'done', date:'20/05'},
+        {fr:"Seed DB avec l'ensemble des comptes comptables", en:"DB seeding with the full chart of accounts", status:'done', date:'20/05'},
+        {fr:"Module compta : écran Dashboard, Grand livre, Balance, page Exports, écritures en draft", en:"Accounting module: Dashboard, General ledger, Trial balance, Exports page, draft entries", status:'done', date:'19/05'},
+        {fr:"Moteur d'auto-posting : réservations (chambre, salle, groupe), dépenses, encaissements restaurant, règlements de factures, avances", en:"Auto-posting engine: bookings (room, hall, group), expenses, restaurant collections, invoice settlements, advances", status:'done', date:'21/05'},
+        {fr:"Exports comptables vers Sage et Odoo", en:"Accounting exports to Sage and Odoo", status:'done', date:'21/05'},
+        {fr:"Bug très critique corrigé : aucune apparition des mouvements d'argent dans le module comptable", en:"Very critical bug fixed: no money movements appearing in the accounting module", status:'done', date:'20/05'},
+        {fr:"Vérification compta sur tous les flux : avances, espèces, bons de commande/livraison, restaurant — 11 tickets", en:"Accounting verification across all flows: advances, cash, purchase/delivery orders, restaurant — 11 tickets", status:'done', date:'03-04/06'},
+        {fr:"Refonte du cycle de vie des réservations : avance vs caution, prolongations, départs anticipés, taxes configurables, équipements de chambre, clôture de caisse — 10 tickets", en:"Booking lifecycle overhaul: advance vs deposit, extensions, early departures, configurable taxes, room equipment, cash-register closing — 10 tickets", status:'done', date:'17/06'},
+        {fr:"Tests shifts, transferts de chambre, devises, correction du bug d'arrondi de montant", en:"Shift tests, room transfers, currencies, amount-rounding bug fix", status:'done', date:'06-08/05'},
+        {fr:"Self-service V1 : QR par table sans compte client, paiement hors app (au restaurant), mutation API", en:"Self-service V1: per-table QR without client account, off-app payment (at the restaurant), API mutation", status:'done', date:'01/07 — ~5h'},
+        {fr:"App mobile : cahier des charges, mécanisme d'authentification des clients, évolutions API, méthodologie de développement", en:"Mobile app: specification, client authentication mechanism, API evolutions, development methodology", status:'done', date:'02/07 — 4 tickets'},
+        {fr:"Trouver pourquoi les avances n'apparaissent pas dans le module comptabilité", en:"Find why advances don't appear in the accounting module", status:'progress', date:'04/06 — ≈80h estimées'}
+      ]
+    },
+    {
+      tag:'02', name:'Aegles', period:'Mai — Juillet 2026', hours:'≈53h · 20 tickets',
+      desc:{fr:"Site e-commerce Shopify (Aegle's, complément skincare « Clear Skin System »). Refonte structurelle complète menée en quelques semaines : header, footer, pages produit, page Academy avec contenu dynamisé par metaobjets — livrée par cycles de pushs successifs jusqu'aux correctifs de production.", en:"Shopify e-commerce site (Aegle's, “Clear Skin System” skincare supplement). Complete structural rebuild delivered in a few weeks: header, footer, product pages, Academy page with metaobject-driven content — shipped through successive push cycles up to production fixes."},
+      tasks:[
+        {fr:"Tests Aegles et début de création des tickets", en:"Aegles testing and ticket creation kickoff", status:'done', date:'01-10/06'},
+        {fr:"Back & Front - Homepage Block 3 « The Clear Skin System » (dynamisation)", en:"Back & Front - Homepage Block 3 “The Clear Skin System” (dynamisation)", status:'done', date:'19/06 — ≈4h'},
+        {fr:"Aegles Academy Block 1 : dynamisation des couleurs", en:"Aegles Academy Block 1: colors dynamisation", status:'done', date:'19-23/06 — 0.7h'},
+        {fr:"Back - Aegles Academy Block 2 : metaobjets et dynamisation", en:"Back - Aegles Academy Block 2: metaobjects and dynamisation", status:'done', date:'24/06 — 12h'},
+        {fr:"Création des métaobjets dans l'admin Shopify et de la collection avec caractéristiques", en:"Metaobjects created in the Shopify admin with their characteristics collection", status:'done', date:'24/06'},
+        {fr:"Affichage conditionnel « /month » selon la souscription, logique de reviews ramenée après push", en:"Conditional “/month” display per subscription, reviews logic restored after push", status:'done', date:'29/06'},
+        {fr:"Structuration de la homepage via les sections natives Shopify", en:"Homepage structuring via native Shopify sections", status:'done', date:'26/06 — 3h est.'},
+        {fr:"Récupération des dynamisations perdues après push (Clear Skin System, /month, Academy Block 2)", en:"Recovery of dynamisations lost after push (Clear Skin System, /month, Academy Block 2)", status:'done', date:'26-29/06'},
+        {fr:"Description produit « The Clear Skin System », no-scroll dynamisation", en:"“The Clear Skin System” product description, no-scroll dynamisation", status:'done', date:'25-29/06'},
+        {fr:"JS d'ouverture des sous-items dans la fiche produit", en:"Sub-item opening JS in the product sheet", status:'done', date:'30/06 — 5h'},
+        {fr:"Templates de fiche produit Serum et Bubble, Azelactive avec pourcentages", en:"Serum and Bubble product-sheet templates, Azelactive with percentages", status:'done', date:'30/06'},
+        {fr:"HP Block 4, page Academy : bonnes configs pour les couleurs (bug Immediate)", en:"HP Block 4, Academy page: correct color configs (Immediate bug)", status:'done', date:'01/07'},
+        {fr:"Tests finaux Aegles (dont Safari) et fin des tests", en:"Final Aegles tests (incl. Safari) and test wrap-up", status:'done', date:'29-30/06'}
+      ]
+    },
+    {
+      tag:'03', name:'Aonic — Audit marketing technique', period:'Avril — Juin 2026', hours:'≈65h (partiellement loggé)',
+      desc:{fr:"Audit marketing technique complet pour la boutique Shopify Plus Aonic : vérification systématique d'une douzaine d'intégrations de tracking, score EMQ Meta, mise en place GA4/Looker Studio et formation d'un stagiaire sur ces sujets. La période la plus intense de l'année — « 100% focus ».", en:"Full technical marketing audit for the Aonic Shopify Plus storefront: systematic verification of a dozen tracking integrations, Meta EMQ scoring, GA4/Looker Studio setup, and intern mentoring on the topic. The year's most intense period — “100% focus”."},
+      tasks:[
+        {fr:"Tests systématiques de tous les pixels : Facebook/Instagram, TikTok, Google & YouTube", en:"Systematic testing of all pixels: Facebook/Instagram, TikTok, Google & YouTube", status:'done', date:'20/04'},
+        {fr:"Tests : Klaviyo, Postscript SMS, Recharge, Replo, Superfiliate, Littledata, Intelligems, TripleWhale, Blotout, Alia", en:"Tests: Klaviyo, Postscript SMS, Recharge, Replo, Superfiliate, Littledata, Intelligems, TripleWhale, Blotout, Alia", status:'done', date:'20/04'},
+        {fr:"Audit « Pixel Health » — critique pour l'e-commerce, document de référence rédigé", en:"“Pixel Health” audit — e-commerce critical, reference document drafted", status:'done', date:'17/04 — ≈3h'},
+        {fr:"Analyse du score EMQ (Event Match Quality) Meta et rédaction du breakdown", en:"Meta EMQ (Event Match Quality) score analysis and breakdown write-up", status:'done', date:'avril'},
+        {fr:"Points de crise : Ak, Big Jo, T2, Mr Guy, Cc — rapport de réunion et plan d'action", en:"Crisis sessions: Ak, Big Jo, T2, Mr Guy, Cc — meeting report and action plan", status:'done', date:'16/04'},
+        {fr:"Structure globale du dashboard Google Looker Studio", en:"Overall structure of the Google Looker Studio dashboard", status:'done', date:'17-23/04 — ≈6h'},
+        {fr:"Setup GA4 complet (compte, configuration, Google Tag)", en:"Full GA4 setup (account, configuration, Google Tag)", status:'done', date:'19/03 — ≈1.3h'},
+        {fr:"Dynamisation du nouveau header, switch par checkbox des menus, conformité du JS au drawer", en:"New header dynamisation, checkbox-based menu switching, drawer-compliant JS", status:'done', date:'12-15/06 — 11h'},
+        {fr:"Bug difficile du switch de header résolu en binôme avec Elsira", en:"Difficult header-switching bug resolved pairing with Elsira", status:'done', date:'15/06'},
+        {fr:"Review Aonic et dynamisation finalisée", en:"Aonic review and dynamisation finalized", status:'done', date:'12-16/06'}
+      ]
+    },
+    {
+      tag:'04', name:'Module Comptabilité Hoteli', period:'Avril — Juin 2026', hours:'≈60h · ~50 tickets',
+      desc:{fr:"Chantier autonome majeur au sein de Hoteli : conception et implémentation d'un système comptable inspiré du référentiel OHADA — du plan comptable jusqu'aux écritures automatiques et aux exports vers des logiciels tiers (Sage, Odoo).", en:"Major standalone workstream within Hoteli: design and implementation of an OHADA-inspired accounting system — from chart of accounts to automatic journal entries and third-party exports (Sage, Odoo)."},
+      tasks:[
+        {fr:"Point avec Mr Guy : compréhension de la tâche comptable et spécification des normes", en:"Session with Mr Guy: understanding the accounting task and specifying standards", status:'done', date:'29/04'},
+        {fr:"Audit hoteli_api, hoteli_restaurant, hoteli_reception avant démarrage", en:"hoteli_api, hoteli_restaurant, hoteli_reception audit before kickoff", status:'done', date:'28/04 — 4h20'},
+        {fr:"Génération du plan de travail par ordre de priorité, validation Fz/T2", en:"Work plan generated by priority order, Fz/T2 validation", status:'done', date:'29/04'},
+        {fr:"19 tickets de spécification créés (référentiel, plan comptable, écritures, auto-posting)", en:"19 specification tickets created (chart of accounts, entries, auto-posting)", status:'done', date:'20-21/05'},
+        {fr:"Création du rôle comptable, attachement et script de chargement des permissions", en:"Accounting role creation, permission attachment and loading script", status:'done', date:'19-21/05'},
+        {fr:"Catégorie comptable sur le formulaire de dépense, comptes d'attente et écarts de caisse", en:"Accounting category on the expense form, suspense accounts and cash discrepancies", status:'done', date:'20-21/05'},
+        {fr:"Plan comptable neutre, grand livre, tests compta avec Mr Guy", en:"Neutral chart of accounts, general ledger, accounting tests with Mr Guy", status:'done', date:'01/06 — 3h10'},
+        {fr:"Create Account Entry, entries par source/id, resolve tax config", en:"Create Account Entry, entries by source/id, resolve tax config", status:'done', date:'08/06'}
+      ]
+    },
+    {
+      tag:'05', name:'Odoo', period:'Février — Mai 2026', hours:'≈79h',
+      desc:{fr:"Montée en compétence et déploiement d'Odoo Community : fabrication, nomenclatures, contrôle qualité, employés. Auto-hébergement sur serveur via Docker, en lien direct avec les besoins du module comptabilité Hoteli.", en:"Skill-building and deployment of Odoo Community: manufacturing, BOMs, quality control, employees. Self-hosted on a server via Docker, directly tied to the Hoteli accounting module's needs."},
+      tasks:[
+        {fr:"Configuration fabrication, points de contrôle qualité, MTO, variantes de produit", en:"Manufacturing config, quality control points, MTO, product variants", status:'done', date:'09-10/02'},
+        {fr:"Création d'employés, produits finis/semi-finis, matières premières, consommables, emplacements — 12 tickets", en:"Employees, finished/semi-finished products, raw materials, consumables, locations — 12 tickets", status:'done', date:'16-18/02'},
+        {fr:"TP final Odoo : torréfaction, transferts internes, postes de charge", en:"Final Odoo exercise: roasting, internal transfers, work centers", status:'done', date:'12-24/02'},
+        {fr:"Recherche hébergement Odoo Community pour usage public, déploiement Ngrok (3h réel / 5h estimé)", en:"Odoo Community public hosting research, Ngrok deployment (3h actual / 5h estimated)", status:'done', date:'24-25/02'},
+        {fr:"Déploiement Docker sur serveur : Dockerfile, Nginx, nom de domaine, debug Postgres", en:"Server Docker deployment: Dockerfile, Nginx, domain name, Postgres debugging", status:'done', date:'11-15/05'},
+        {fr:"Workers, longpolling, cron — approfondissement", en:"Workers, longpolling, cron — deep dive", status:'done', date:'18-19/06'},
+        {fr:"Utilisation par les users Windows du déploiement Odoo", en:"Windows users onboarded onto the Odoo deployment", status:'done', date:'26/02 — 1h30'}
+      ]
+    },
+    {
+      tag:'06', name:'TP Serveurs / CI-CD', period:'Janvier — Février 2026', hours:'≈44h',
+      desc:{fr:"Formation serveur puis mise en pratique complète : configuration d'un VPS, installation des paquets, pipeline CI/CD GitLab avec Docker, connexion SSH, variables d'environnement — jusqu'au déploiement continu validé en conditions réelles.", en:"Server training then full hands-on practice: VPS configuration, package installation, GitLab CI/CD pipeline with Docker, SSH connection, environment variables — up to continuous deployment validated in real conditions."},
+      tasks:[
+        {fr:"Configuration du serveur, installation des paquets, installations pour déploiement", en:"Server config, package installation, deployment setup", status:'done', date:'29-30/01 — ~13h'},
+        {fr:"CI/CD avec Docker (sessions quotidiennes)", en:"CI/CD with Docker (daily sessions)", status:'done', date:'02-06/02 — ~26h'},
+        {fr:"Test du CI/CD : Docker, variables d'env, connexion SSH GitLab sur le serveur", en:"CI/CD testing: Docker, env vars, GitLab SSH connection to the server", status:'done', date:'18/02 — 70h cumulées'},
+        {fr:"Déploiement effectué et validé, bilan TP serveurs", en:"Deployment completed and validated, server training wrap-up", status:'done', date:'19-20/02'},
+        {fr:"CJET : CI/CD et écoute du port de déploiement Nginx", en:"CJET: CI/CD and Nginx deployment port listening", status:'done', date:'25-26/02 — 2h'}
+      ]
+    },
+    {
+      tag:'07', name:'Analytics & Tracking', period:'Mars 2026', hours:'≈52h',
+      desc:{fr:"Trois semaines dédiées au tracking e-commerce : GA4, Google Tag, création d'un site e-commerce de test avec Fz (18h), déploiement (8h), injection de tags, tracking d'événements avancé — le socle qui a préparé l'audit Aonic d'avril.", en:"Three weeks dedicated to e-commerce tracking: GA4, Google Tag, a test e-commerce site built with Fz (18h), deployment (8h), tag injection, advanced event tracking — the groundwork for April's Aonic audit."},
+      tasks:[
+        {fr:"Google Analytics débuts : compte GA, configuration du site, Google Tag", en:"Google Analytics kickoff: GA account, site configuration, Google Tag", status:'done', date:'18-19/03'},
+        {fr:"Création d'un site e-commerce avec Fz pour le tracking avancé", en:"E-commerce site built with Fz for advanced tracking", status:'done', date:'24/03 — 18h'},
+        {fr:"Création de site pour tracking avancé (16h) et déploiement (8h)", en:"Advanced-tracking site build (16h) and deployment (8h)", status:'done', date:'24-27/03'},
+        {fr:"Injection des tags pour tracker les actions, résolution du souci d'affichage des vues", en:"Tag injection for action tracking, view-display issue resolved", status:'done', date:'23-24/03 — 4h'},
+        {fr:"Tracking What'slist (20h), compréhension des events de track", en:"What'slist tracking (20h), track-event comprehension", status:'done', date:'23-27/03 — 22h'},
+        {fr:"Ajout de Postgres à Vercel, tentative Neon → React (suspendu)", en:"Postgres added to Vercel, Neon → React attempt (suspended)", status:'progress', date:'19/03'}
+      ]
+    },
+    {
+      tag:'08', name:'NestJS — Migration backend', period:'Avril — Juin 2026', hours:'≈24h',
+      desc:{fr:"Apprentissage approfondi du framework NestJS en vue d'une migration progressive du backend existant : modules, pipes, guards, intercepteurs, providers, gestion d'erreurs — avec application concrète en juin.", en:"In-depth NestJS learning toward a progressive backend migration: modules, pipes, guards, interceptors, providers, error handling — applied hands-on in June."},
+      tasks:[
+        {fr:"Création de l'app NestJS et des premiers controllers", en:"NestJS app and first controllers creation", status:'done', date:'24/04 — 2h'},
+        {fr:"Providers, Modules, Pipes, Middleware, Exception filters", en:"Providers, Modules, Pipes, Middleware, Exception filters", status:'done', date:'24/04'},
+        {fr:"Pipes, guards, interceptors, testing, configuration appliqués", en:"Pipes, guards, interceptors, testing, configuration applied", status:'done', date:'30/04 — 3h'},
+        {fr:"Connexion MongoDB et configuration Swagger", en:"MongoDB connection and Swagger configuration", status:'done', date:'30/04-04/05'},
+        {fr:"Debug ports 3000/3001 indisponibles", en:"Ports 3000/3001 unavailable debugging", status:'done', date:'24/04'}
+      ]
+    },
+    {
+      tag:'09', name:'Infra Cloud GPU — Salad / Vast.ai', period:'Mars — Avril 2026', hours:'≈15h',
+      desc:{fr:"Recherche d'infrastructure GPU mutualisée pour les besoins en IA de l'équipe : étude comparative de deux marketplaces de location GPU, installation et tests concrets sur machine Windows.", en:"Research into pooled GPU infrastructure for the team's AI needs: comparative study of two GPU rental marketplaces, hands-on installation and testing on a Windows machine."},
+      tasks:[
+        {fr:"Point avec Mr Cc : cadrage des recherches sur Salad et le rack", en:"Session with Mr Cc: scoping the Salad and rack research", status:'done', date:'30-31/03 — 3h30'},
+        {fr:"Étude comparative Salad.com / Vast.ai (pricing, gains)", en:"Salad.com / Vast.ai comparative study (pricing, earnings)", status:'done', date:'31/03-01/04'},
+        {fr:"Installation de Salad sur la machine Windows", en:"Salad installed on the Windows machine", status:'done', date:'01/04'},
+        {fr:"Recherche : installation/mise à jour OS, drivers, firmware ; conteneur pour l'équipe IA", en:"Research: OS/driver/firmware install; container for the AI team", status:'done', date:'30/03'},
+        {fr:"Document de présentation du travail fourni", en:"Presentation document of the work delivered", status:'done', date:'01/04'}
+      ]
+    },
+    {
+      tag:'10', name:'Osmose Studio / SimplyBook.me', period:'Avril 2026', hours:'≈15h',
+      desc:{fr:"Prise en main et configuration d'une plateforme de réservation en ligne (SimplyBook.me) pour un studio de tournage/enregistrement : services, catégories, add-ons, paiement intégré, et personnalisation CSS du site Osmose Studio 2.", en:"Onboarding and configuration of an online booking platform (SimplyBook.me) for a recording/shooting studio: services, categories, add-ons, integrated payment, plus custom CSS across Osmose Studio 2."},
+      tasks:[
+        {fr:"Prise en main de SimplyBook.me, création des services et catégories", en:"SimplyBook.me onboarding, services and categories creation", status:'done', date:'02/04'},
+        {fr:"Recherche et configuration de paiement (Stripe)", en:"Payment research and configuration (Stripe)", status:'done', date:'02-03/04'},
+        {fr:"Add-ons : ajout, configuration et debug d'apparition (3h30)", en:"Add-ons: addition, configuration and display debugging (3.5h)", status:'done', date:'03/04'},
+        {fr:"Custom CSS sur tout Osmose Studio 2, couleurs des boutons, devise, prix", en:"Custom CSS across Osmose Studio 2, button colors, currency, prices", status:'done', date:'07-08/04'},
+        {fr:"Présentations à Mr Guy et remodifications après retours", en:"Presentations to Mr Guy and rework after feedback", status:'done', date:'03-08/04'},
+        {fr:"Absence wifi : achat de connexion sur fonds propres pour continuer le travail", en:"No-WiFi incident: connection purchased out of pocket to keep working", status:'done', date:'03/04'}
+      ]
+    },
+    {
+      tag:'11', name:'Oloid — Tests & déploiement', period:'Avril — Mai 2026', hours:'≈30h',
+      desc:{fr:"Sur Oloid, un rôle transverse : initialisation de Claude dans le projet, création des tickets de test avec Pipinio, campagne « Construire et tester » sur toutes les pages (18 tickets), et le déploiement CI/CD complet du site.", en:"A cross-cutting role on Oloid: Claude initialized in the project, test tickets created with Pipinio, the “Build and test” campaign across every page (18 tickets), and the site's full CI/CD deployment."},
+      tasks:[
+        {fr:"Initialisation de Claude dans Oloid, création des tickets de test avec Pipinio", en:"Claude initialized in Oloid, test tickets created with Pipinio", status:'done', date:'17/04'},
+        {fr:"Construction et tests des pages Home (5 blocs), About Who/What (7 blocs), Hero, Landing Gallery, Header", en:"Build and test of Home (5 blocks), About Who/What (7 blocks), Hero, Landing Gallery, Header", status:'done', date:'22/05 — 8h'},
+        {fr:"Pages Projects, Contact, FAQ, Project Detail : tickets de test créés", en:"Projects, Contact, FAQ, Project Detail pages: test tickets created", status:'new', date:'22/05'},
+        {fr:"Déploiement Oloid : domaine Infomaniak, serveur, notes pour les prochains déploiements", en:"Oloid deployment: Infomaniak domain, server, notes for future deployments", status:'done', date:'20/04'},
+        {fr:"Dossier et fichiers de CD pour Oloid, merge sur main", en:"CD folder and files for Oloid, merge to main", status:'done', date:'17-21/04'}
+      ]
+    },
+    {
+      tag:'12', name:'Encadrement & Formation Jr', period:'Février — Juillet 2026', hours:'≈40h',
+      desc:{fr:"Accueil et montée en compétence des stagiaires : installation des environnements, formation JavaScript et Python progressives, création d'exercices publiés sur GitHub, assistance de code quotidienne, suivi des tests ARA de Pipinio.", en:"Intern onboarding and skill-building: environment setup, progressive JavaScript and Python training, GitHub-published exercises, daily code assistance, follow-up on Pipinio's ARA tests."},
+      tasks:[
+        {fr:"Cours Odoo créé pour Pipinio et soumis à Mr Félix", en:"Odoo course created for Pipinio and submitted to Mr Félix", status:'done', date:'05/02 — 1h35'},
+        {fr:"Point Python avec Pipinio : variables, structures de contrôle, boucles, fonctions, structures de données", en:"Python session with Pipinio: variables, control structures, loops, functions, data structures", status:'done', date:'12/02'},
+        {fr:"Suivi de Pipinio pour la formation Python, TP et corrections", en:"Pipinio's Python training follow-up, exercises and reviews", status:'done', date:'25-26/02'},
+        {fr:"Explication des tests à faire sur ARA, vérification du travail effectué", en:"ARA test walkthrough and work verification", status:'done', date:'17-21/04'},
+        {fr:"Installation OS, comptes Google, IDE pour les nouvelles stagiaires, culture Digitaleurs", en:"OS install, Google accounts, IDE setup for the new interns, Digitaleurs culture", status:'done', date:'02/06'},
+        {fr:"Formation JS finie — création d'exos pour TP, publiés sur GitHub", en:"JS training completed — practical exercises created, GitHub-published", status:'done', date:'08/06'},
+        {fr:"Assistance de code quotidienne, bilans de journée, encouragement au rythme", en:"Daily code assistance, day wrap-ups, pacing encouragement", status:'done', date:'03/06'}
+      ]
+    },
+    {
+      tag:'13', name:'Pharmacie / Medlogue', period:'Juin 2026', hours:'≈15h',
+      desc:{fr:"Étude de cadrage pour un logiciel métier de gestion de pharmacie et étude du projet Medlogue : compréhension du métier, cahier des charges, points d'équipe.", en:"Scoping study for a pharmacy management software and the Medlogue project study: business comprehension, specification, team sessions."},
+      tasks:[
+        {fr:"Medlogue : étude du projet", en:"Medlogue: project study", status:'done', date:'16/06'},
+        {fr:"Pharmacie métier : compréhension du projet", en:"Pharmacy business: project comprehension", status:'done', date:'16/06'},
+        {fr:"Point sur le projet de pharmacie avec l'équipe", en:"Pharmacy project session with the team", status:'done', date:'16/06 — 2h'}
+      ]
+    },
+    {
+      tag:'14', name:'Autres chantiers', period:'Janvier — Juin 2026', hours:'≈60h',
+      desc:{fr:"Le reste du terrain couvert : Cave à Vins, CJET, Navi Togo, Equatour, Lampp, Akurat, Salad — et la coordination quotidienne de l'équipe.", en:"The rest of the ground covered: Cave à Vins, CJET, Navi Togo, Equatour, Lampp, Akurat, Salad — plus the team's daily coordination."},
+      tasks:[
+        {fr:"Cave à Vins : header en ligne, création des produits (12), types et services, images", en:"Cave à Vins: online header, product creation (12), types and services, images", status:'done', date:'06-07/01'},
+        {fr:"CJET : génération, CI/CD (2h), impossibilité de connexion GitLab résolue", en:"CJET: generation, CI/CD (2h), GitLab connection issue resolved", status:'done', date:'13-26/02'},
+        {fr:"Navi Togo déployé", en:"Navi Togo deployed", status:'done', date:'22/04 — 1h50'},
+        {fr:"Equatour : création de contenu, droits serveur, header, configuration, données", en:"Equatour: content creation, server permissions, header, configuration, data", status:'done', date:'19/06'},
+        {fr:"Lampp : dynamisation du projet, erreur 404 résolue, tests en ligne", en:"Lampp: project dynamisation, 404 error resolved, live tests", status:'done', date:'08-11/06'},
+        {fr:"Akurat : email testing", en:"Akurat: email testing", status:'done', date:'18/06 — 3h'},
+        {fr:"Estimations : CJES (4h10), REVOLT, site de réservation en ligne, Aegles", en:"Estimations: CJES (4h10), REVOLT, online booking site, Aegles", status:'done', date:'27/01-10/06'},
+        {fr:"Entretien de Rosalie, entretien de Lawson, entretien de Sarah (recrutements)", en:"Rosalie, Lawson and Sarah interviews (recruitment)", status:'done', date:'11/02-19/06'},
+        {fr:"Daily standups et points d'équipe quotidiens (juin-juillet)", en:"Daily standups and team check-ins (June-July)", status:'done', date:'09/06-03/07'}
+      ]
+    }
+  ]
+};
+PERSON.tickets = window.TICKETS;
+PERSON.advanced = {"tiles": [{"num": "118", "fr": "Jours actifs tracés", "en": "Active days tracked"}, {"num": "6,0 h", "fr": "Moyenne par jour loggé", "en": "Average per logged day", "note": "Hors périodes « 100% focus » non saisies.", "noteEn": "Excluding untracked “100% focus” periods."}, {"num": "18 %", "fr": "Tickets avec temps saisi", "en": "Tickets with logged time", "note": "42 tickets sur 228 — le volume passait avant la saisie.", "noteEn": "42 of 228 tickets — volume came before logging."}], "estimation": {"data": [7, 9, 3]}, "collabs": [{"n": "Mr T2", "d": "×19"}, {"n": "Pipinio", "d": "×14"}, {"n": "Felix / Fz", "d": "×13"}, {"n": "Mr Guy", "d": "×11"}, {"n": "Mr Cc", "d": "×7"}, {"n": "Big Jo", "d": "×4"}, {"n": "Mr Théo", "d": "×3"}, {"n": "Stagiaires", "d": "×3"}, {"n": "Irène", "d": "×2"}, {"n": "Od", "d": "×2"}], "incidents": [{"n": "Coupures d'électricité", "d": "×8"}, {"n": "Wifi / connexion", "d": "×3"}, {"n": "Déménagement", "d": "×1"}]};
+
+renderBilan(PERSON);
+</script>
+</body>
+</html>

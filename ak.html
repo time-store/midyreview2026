@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr" data-person="ak">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GNANDA AKLESSO — Bilan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <a class="back-link" href="index.html"><span data-fr>← Équipe</span><span data-en>← Team</span></a>
+      A. <strong>GNANDA</strong>&nbsp;<span data-fr>· Bilan 2026</span><span data-en>· Year in Review 2026</span>
+    </div>
+    <div class="toggles">
+      <div class="lang-toggle">
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button id="btn-theme" class="theme-toggle" onclick="toggleTheme()" title="Thème">☾</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span data-fr>Janvier — Juillet 2026</span><span data-en>January — July 2026</span></div>
+    <h1 class="hero-title">
+      <span data-fr>Sept mois d'<em>intégration</em>, de sites menés du design jusqu'à la production.</span>
+      <span data-en>Seven months of <em>integration</em>, taking websites from design all the way to production.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr>GNANDA AKLESSO — Développeur Front-End / Intégrateur. Ce document retrace, projet par projet, le travail accompli entre janvier et juillet 2026 chez Digitaleurs : intégrations Payload et Shopify, retours clients, plateformes de réservation, formations et tests en production.</span>
+      <span data-en>GNANDA AKLESSO — Front-End Developer / Integrator. This document traces, project by project, the work accomplished between January and July 2026 at Digitaleurs: Payload and Shopify integrations, client feedback rounds, booking platforms, training and production testing.</span>
+    </p>
+    <div class="hero-meta" id="hero-meta"></div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title"><span data-fr>Vue d'ensemble</span><span data-en>Overview</span></h2>
+      <p class="section-desc">
+        <span data-fr>Répartition du temps suivi et volume de tickets traités sur les sept mois.</span>
+        <span data-en>Distribution of tracked time and volume of tickets handled across the seven months.</span>
+      </p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par mois</span><span data-en>Hours logged per month</span></h3>
+        <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition du temps par projet</span><span data-en>Time by project</span></h3>
+        <div class="chart-wrap"><canvas id="chartProjects"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tickets Redmine par projet</span><span data-en>Redmine tickets per project</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTickets"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Statut des 82 tickets</span><span data-en>Status of the 82 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartStatus"></canvas></div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Note de lecture :</strong> les heures proviennent de la feuille de suivi quotidienne. Quand un ticket Redmine n'a pas de temps passé renseigné, son <strong>temps estimé</strong> est utilisé et marqué « ≈ ». Dans les périodes intenses, le travail passait avant la saisie — et tout le travail n'a pas donné lieu à un ticket. Les volumes réels sont donc <strong>supérieurs</strong> à ce qui est affiché ici (≈ 316 h de tickets s'ajoutent aux périodes peu tracées de la feuille de temps).</span>
+      <span data-en><strong>How to read this:</strong> hours come from the daily tracking sheet. When a Redmine ticket has no logged time, its <strong>estimated time</strong> is used and flagged with "≈". During intense periods, the work came before the logging — and not all work resulted in a ticket. Actual volumes are therefore <strong>higher</strong> than displayed here (≈316h of ticket time adds to the sparsely-tracked periods of the timesheet).</span>
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title"><span data-fr>Le journal de l'année</span><span data-en>The year's log</span></h2>
+      <p class="section-desc"><span data-fr>Mois par mois, les chantiers ouverts et les temps forts.</span><span data-en>Month by month, the projects in motion and the highlights.</span></p>
+    </div>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title"><span data-fr>Projets en détail</span><span data-en>Projects in detail</span></h2>
+      <p class="section-desc"><span data-fr>Chaque chantier, son contexte, et les tâches marquantes issues du suivi Redmine et de la feuille de temps.</span><span data-en>Each project, its context, and notable tasks drawn from Redmine tracking and the timesheet.</span></p>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+  </section>
+
+  <section class="section" id="tickets">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title"><span data-fr>Tous les tickets Redmine</span><span data-en>All Redmine tickets</span></h2>
+      <p class="section-desc"><span data-fr>La liste complète, filtrable par projet, statut et priorité. Le temps affiché est le temps passé ; « ≈ » indique le temps estimé utilisé à défaut, « — » un ticket traité sans saisie de temps.</span><span data-en>The complete list, filterable by project, status and priority. The time shown is time spent; "≈" marks estimated time used as fallback, "—" a ticket handled without time entry.</span></p>
+    </div>
+    <div class="ticket-controls">
+      <input type="search" id="t-search" placeholder="Rechercher… / Search…">
+      <select id="t-proj"><option value="">Projet / Project</option></select>
+      <select id="t-status"><option value="">Statut / Status</option></select>
+      <select id="t-prio"><option value="">Priorité / Priority</option></select>
+      <span class="ticket-count" id="t-count"></span>
+    </div>
+    <div class="ticket-table-wrap" id="ticket-table"></div>
+  </section>
+
+  <section class="section" id="advanced">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title"><span data-fr>Statistiques avancées</span><span data-en>Advanced statistics</span></h2>
+      <p class="section-desc"><span data-fr>Rythme de travail, tickets les plus lourds, précision d'estimation, collaborations et aléas du terrain — calculés depuis la feuille de temps et les tickets. Quand une statistique n'apparaît pas ici, c'est que les données ne permettent pas de la calculer honnêtement.</span><span data-en>Work rhythm, heaviest tickets, estimation accuracy, collaborations and field hazards — computed from the timesheet and tickets. When a statistic is missing here, the data doesn't allow computing it honestly.</span></p>
+    </div>
+    <div class="stat-tiles" id="adv-tiles"></div>
+    <div class="charts-grid" style="margin-top:24px;grid-template-columns:1fr;">
+      <div class="chart-card">
+        <h3><span data-fr>Top 10 des tickets les plus lourds (« ≈ » = temps estimé)</span><span data-en>Top 10 heaviest tickets ("≈" = estimated time)</span></h3>
+        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid " style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tâches vs Bugs</span><span data-en>Tasks vs Bugs</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTracker"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition par priorité</span><span data-en>Breakdown by priority</span></h3>
+        <div class="chart-wrap short"><canvas id="chartPrio"></canvas></div>
+      </div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Collaborations les plus fréquentes (mentions dans la feuille de temps)</span><span data-en>Most frequent collaborations (mentions in the timesheet)</span></h3>
+      <div class="proj-chips" id="adv-collabs"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title"><span data-fr>Compétences mobilisées</span><span data-en>Skills exercised</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Front-End</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML / CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Animations</span><span class="skill-tag">Responsive</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>CMS & Blocks</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Payload CMS</span><span class="skill-tag">Dynamisation</span><span class="skill-tag">Blocks sur-mesure</span><span class="skill-tag">WordPress</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Shopify</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Liquid</span><span class="skill-tag">Sections</span><span class="skill-tag">PDP</span><span class="skill-tag">Tests production</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Marketing & Data</span><span data-en>Marketing & Data</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Google Analytics</span><span class="skill-tag">Meta Pixel</span><span class="skill-tag">SEO</span><span class="skill-tag">Optimisation d'images</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Encadrement</span><span data-en>Mentoring</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Formation Pipinio (front)</span><span class="skill-tag">Stagiaires Flutter</span><span class="skill-tag">Plan de formation Payload</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Collaboration</span><span data-en>Collaboration</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span><span class="skill-tag">Redmine</span><span class="skill-tag">Estimations & devis</span><span class="skill-tag">Points quotidiens</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="closing">
+    <div class="closing">
+      <p>
+        <span data-fr>Des blocks intégrés par dizaines, des sites déployés, des bugs traqués jusqu'en production — le bilan d'une année passée à transformer des maquettes en produits vivants.</span>
+        <span data-en>Dozens of blocks integrated, sites deployed, bugs chased all the way into production — the record of a year spent turning mockups into living products.</span>
+      </p>
+      <div class="sign">— GNANDA AKLESSO</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span data-fr>Document généré à partir du suivi Redmine et de la feuille de temps, janvier–juillet 2026.</span>
+  <span data-en>Document generated from Redmine tracking and the timesheet, January–July 2026.</span>
+</footer>
+
+<script src="assets/tickets-ak.js"></script>
+<script>
+const PERSON = {
+  heroMeta: [
+    {num:'82', fr:'Tickets Redmine', en:'Redmine tickets'},
+    {num:'≈316h', fr:'Temps sur tickets (estimé)', en:'Ticket time (estimated)'},
+    {num:'15+', fr:'Projets couverts', en:'Projects covered'},
+    {num:'7', fr:'Mois d’activité', en:'Months of activity'}
+  ],
+
+  monthly: [
+    {m:'Jan', mEn:'Jan', hours:70},
+    {m:'Fév', mEn:'Feb', hours:58},
+    {m:'Mar', mEn:'Mar', hours:13},
+    {m:'Avr', mEn:'Apr', hours:139},
+    {m:'Mai', mEn:'May', hours:94},
+    {m:'Juin', mEn:'Jun', hours:23},
+    {m:'Juil', mEn:'Jul', hours:1}
+  ],
+
+  projectHours: [
+    {name:'Oloid', hours:100},
+    {name:'Akurat', hours:46},
+    {name:'Preziosi (Site Light)', hours:40},
+    {name:'Revolt', hours:40},
+    {name:'Hoteli', hours:35},
+    {name:'Formations', hours:30},
+    {name:'Aegles & Dealy', hours:30},
+    {name:'Cave à vin', hours:21},
+    {name:'Site JA', hours:17},
+    {name:'Autres', hours:38}
+  ],
+
+  ticketsPerProject: [
+    {proj:'Oloid', n:30},
+    {proj:'Preziosi Lightning', n:20},
+    {proj:'Akurat', n:14},
+    {proj:'Hoteli', n:8},
+    {proj:'Aegles', n:7},
+    {proj:'Aoniclife', n:3}
+  ],
+
+  statusCounts: {
+    fr:['Résolu / Fermé','En cours','Nouveau','Feedback'],
+    en:['Resolved / Closed','In progress','New','Feedback'],
+    data:[75,4,2,1]
+  },
+
+  log: [
+    {
+      month:'Janvier', monthEn:'January',
+      note:{fr:"Déploiement et corrections du site Cave à vin (implémentation des blocks), page de détails de jobs du site Akurat avec Tina et Od, tickets Hoteli (page de dépenses, tableau de factures clients, bouton de fermeture de shift, page de prise de commande vitrine), site JA et démarrage du site Light (Preziosi).", en:"Deployment and fixes on the Cave à Vin site (block implementation), Akurat job detail page with Tina and Od, Hoteli tickets (expenses page, client invoice table, shift-close button, storefront order page), JA site and Site Light (Preziosi) kickoff."},
+      projects:[{n:'Cave à vin', d:'~21h'},{n:'Hoteli', d:'~15h'},{n:'Akurat', d:'~10h'},{n:'Site JA / Light', d:'~15h'}]
+    },
+    {
+      month:'Février', monthEn:'February',
+      note:{fr:"Preziosi Lightning : une vingtaine de tickets de retours client (menu mobile, polices, pages About et Cookie, SEO — 3h — et retours client — 12h). Hoteli : génération d'Excel, upload et compression des images produits, recherches sur la réservation en ligne et démarrage de la plateforme de réservation (ticket de 40h).", en:"Preziosi Lightning: some twenty client-feedback tickets (mobile menu, fonts, About and Cookie pages, SEO — 3h — and client feedback — 12h). Hoteli: Excel generation, product image upload and compression, online booking research and kickoff of the booking platform (40h ticket)."},
+      projects:[{n:'Preziosi', d:'~25h'},{n:'Hoteli', d:'~20h'},{n:'Site JA', d:'~10h'}]
+    },
+    {
+      month:'Mars', monthEn:'March',
+      note:{fr:"Suite de la plateforme de réservation Hoteli et recherches sur la réservation groupée, SEO et référencement Google de Preziosi, adaptation du site JA à la maquette, démarrage d'Oloid (initialisation 6h, intégration statique 5h, animations 8h, dynamisation Payload), demandes de la réunion Preziosi du 16 mars (16h), corrections Can Soleil, formation React Native, estimation du site de réservation de meubles d'événements avec Felix et Trix.", en:"Hoteli booking platform continued plus group-booking research, Preziosi SEO and Google indexing, JA site adapted to the mockup, Oloid kickoff (init 6h, static integration 5h, animations 8h, Payload dynamisation), Preziosi March-16 meeting requests (16h), Can Soleil fixes, React Native training, event-furniture booking site estimation with Felix and Trix."},
+      projects:[{n:'Oloid', d:'~22h'},{n:'Preziosi', d:'~18h'},{n:'Hoteli', d:'~10h'},{n:'Formation RN', d:'~8h'}]
+    },
+    {
+      month:'Avril', monthEn:'April',
+      note:{fr:"Mois le plus dense de l'année : prise en main de Revolt (~40h), formations Google Analytics & Meta Pixel, sprint Akurat complet — header, footers, dropdown menu, pages Taas, Strategic Hiring, Jobs, Contact, Talent Search, transitions de pages (8h) — préparation et animation de la réunion Akurat, estimations des tickets, points Aonic et Oloid, Medlog, résolution du problème de déploiement BTP avec Mr Felix.", en:"The densest month of the year: Revolt onboarding (~40h), Google Analytics & Meta Pixel training, full Akurat sprint — header, footers, dropdown menu, Taas, Strategic Hiring, Jobs, Contact, Talent Search pages, page transitions (8h) — Akurat meeting preparation and hosting, ticket estimations, Aonic and Oloid check-ins, Medlog, BTP deployment issue resolved with Mr Felix."},
+      projects:[{n:'Revolt', d:'~40h'},{n:'Akurat', d:'~36h'},{n:'Formation GA/Meta', d:'~30h'},{n:'Oloid / Aonic', d:'~15h'}]
+    },
+    {
+      month:'Mai', monthEn:'May',
+      note:{fr:"Le grand chantier Oloid front : designs du site, ticket ANIMATIONS (24h), tous les blocks de la homepage (1 à 5), pages About et About2, page Projects « Four reasons to work with us », page 5 « The Ready House » (8h), FAQ, footer (8h) et dynamisations back — une trentaine de tickets résolus en un mois.", en:"The big Oloid front-end push: website designs, the ANIMATIONS ticket (24h), every homepage block (1 through 5), About and About2 pages, the Projects page “Four reasons to work with us”, page 5 “The Ready House” (8h), FAQ, footer (8h) and back-office dynamisations — about thirty tickets resolved in one month."},
+      projects:[{n:'Oloid', d:'~80h'},{n:'Points & réunions', d:'~10h'}]
+    },
+    {
+      month:'Juin', monthEn:'June',
+      note:{fr:"Dynamisation de Medlog (création des collections, séparation des blocks), corrections Oloid, tickets Lamp, montée en puissance sur Aegles (Homepage Block 3 « The Clear Skin System » 10h, Academy Block 1 6h, PDP mobile 6h), étude et estimation des tickets Eagle + Medlog, Dealy quotidien, recherches Pharmacie, point de formation de Pipinio sur l'intégration statique, tests et corrections des blocks Aegles.", en:"Medlog dynamisation (collections creation, block separation), Oloid fixes, Lamp tickets, ramp-up on Aegles (Homepage Block 3 “The Clear Skin System” 10h, Academy Block 1 6h, mobile PDP 6h), Eagle + Medlog project study and ticket estimation, daily Dealy, Pharmacy research, Pipinio training session on static integration, Aegles block tests and fixes."},
+      projects:[{n:'Aegles', d:'~30h'},{n:'Medlog', d:'~20h'},{n:'Oloid / Lamp', d:'~12h'},{n:'Dealy', d:'quotidien'}]
+    },
+    {
+      month:'Juillet', monthEn:'July',
+      note:{fr:"Tests d'Aegles en production et traitement de 4 tickets de bugs en une journée (z-index du menu mobile, logo du footer, homepage mobile, bloc 4 + PDP), plan de devis de maintenance Akurat, recherches sur le projet CNI, démarrage et configuration du site Digitaleurs, formation front de Pipinio, formation Flutter des stagiaires (installation de l'environnement, configuration), élaboration du plan de formation Payload pour Felix et TDE.", en:"Aegles production testing with 4 bug tickets handled in a single day (mobile menu z-index, footer logo, mobile homepage, block 4 + PDP), Akurat maintenance quote plan, CNI project research, Digitaleurs website kickoff and configuration, Pipinio front-end training, interns' Flutter training (environment install, configuration), Payload training plan drafted for Felix and TDE."},
+      projects:[{n:'Aegles', d:'tests prod'},{n:'Site Digitaleurs', d:'démarrage'},{n:'Formations', d:'Flutter + front'},{n:'Akurat', d:'devis'}]
+    }
+  ],
+
+  projects: [
+    {
+      tag:'01', name:'Oloid', period:'Mars — Juin 2026', hours:'≈118h',
+      desc:{fr:"Site vitrine multi-pages pour un contractant en aménagement commercial (Next.js + Payload). Le plus gros chantier de l'année : de l'initialisation du projet et des designs jusqu'aux animations, à l'intégration de toutes les pages et à leur dynamisation — 30 tickets Redmine.", en:"Multi-page showcase site for a commercial fit-out contractor (Next.js + Payload). The year's biggest workstream: from project initialization and designs to animations, full page integration and dynamisation — 30 Redmine tickets."},
+      tasks:[
+        {fr:'Initialisation du projet', en:'Project initialization', status:'done', date:'06/03 — ≈6h'},
+        {fr:'Landing Page design', en:'Landing Page design', status:'done', date:'03/03'},
+        {fr:'Intégration statique - Section principale', en:'Static integration - Main section', status:'done', date:'09/03 — ≈5h'},
+        {fr:'Animations - Section principale', en:'Animations - Main section', status:'done', date:'10/03 — ≈8h'},
+        {fr:'Dynamisation - Section principale (Payload)', en:'Dynamisation - Main section (Payload)', status:'done', date:'11/03 — ≈3.5h'},
+        {fr:'DESIGNS WEBSITE (haute priorité)', en:'WEBSITE DESIGNS (high priority)', status:'done', date:'02/05'},
+        {fr:'ANIMATIONS (haute priorité)', en:'ANIMATIONS (high priority)', status:'done', date:'19/05 — ≈24h'},
+        {fr:'Front - HP Block 1 « Oloid is a delivery-led » + dynamisation back', en:'Front - HP Block 1 “Oloid is a delivery-led” + back dynamisation', status:'done', date:'06/05 — ≈4h'},
+        {fr:'Front - HP Block 2 « Workplace Retail Hospitality »', en:'Front - HP Block 2 “Workplace Retail Hospitality”', status:'done', date:'06/05 — ≈5h'},
+        {fr:'Front - HP Block 4 « Four reasons to work with us »', en:'Front - HP Block 4 “Four reasons to work with us”', status:'done', date:'07/05 — ≈5h'},
+        {fr:'Front - HP Block 5 - Testimonials', en:'Front - HP Block 5 - Testimonials', status:'done', date:'07/05 — ≈4h'},
+        {fr:'Front - Footer + dynamisation back', en:'Front - Footer + back dynamisation', status:'done', date:'08/05 — ≈12h'},
+        {fr:'Back - Header Dynamisation', en:'Back - Header Dynamisation', status:'done', date:'15/05 — ≈2h'},
+        {fr:'Front - About - Block 2 + Back Block 3 « Our mission »', en:'Front - About - Block 2 + Back Block 3 “Our mission”', status:'done', date:'11/05 — ≈7h'},
+        {fr:'Front - About2 - Block 1 « We deliver high-quality fit-outs » (7h) et Block 2 « Our delivery process » (4h)', en:'Front - About2 - Block 1 “We deliver high-quality fit-outs” (7h) and Block 2 “Our delivery process” (4h)', status:'done', date:'12/05 — ≈11h'},
+        {fr:'Back - About2 Block 3 Featured projects + Page 4 dynamisation', en:'Back - About2 Block 3 Featured projects + Page 4 dynamisation', status:'done', date:'26/05 — ≈6h'},
+        {fr:'Front - Page 4 « Four reasons to work with us »', en:'Front - Page 4 “Four reasons to work with us”', status:'done', date:'13/05 — ≈2h'},
+        {fr:'Front - Page 5 « The Ready House »', en:'Front - Page 5 “The Ready House”', status:'done', date:'18/05 — ≈8h'},
+        {fr:'Front - Page 5 PDP « We turn vision into reality »', en:'Front - Page 5 PDP “We turn vision into reality”', status:'done', date:'15/05 — ≈2h'},
+        {fr:'Front - FAQ + FAQ Block 2 « We turn vision into reality… »', en:'Front - FAQ + FAQ Block 2 “We turn vision into reality…”', status:'done', date:'18/05 — ≈5h'},
+        {fr:'Back - Page 6 Contact « We’d love to hear from you »', en:'Back - Page 6 Contact “We’d love to hear from you”', status:'done', date:'27/05 — ≈2h'},
+        {fr:'Tests internes - Mobile', en:'Internal tests - Mobile', status:'done', date:'18/03 — ≈0.5h'},
+        {fr:'HP - Block 3 : padding bottom incorrect (retour design)', en:'HP - Block 3: incorrect padding bottom (design feedback)', status:'done', date:'03/06'},
+        {fr:'Change of copy for the intro', en:'Change of copy for the intro', status:'done', date:'07/03'}
+      ]
+    },
+    {
+      tag:'02', name:'Preziosi Lightning — Site Light / Lamp', period:'Janvier — Mars 2026', hours:'≈66h',
+      desc:{fr:"Site e-commerce de luminaires. Intégration du site (« Lamp site », 10h), longue série de retours client (12h + une dizaine de tickets), SEO (3h), corrections immédiates et demandes de la réunion client du 16 mars (16h) — 20 tickets Redmine.", en:"Lighting e-commerce site. Site integration (“Lamp site”, 10h), long client-feedback series (12h + about ten tickets), SEO (3h), immediate fixes and the March-16 client meeting requests (16h) — 20 Redmine tickets."},
+      tasks:[
+        {fr:'Lamp site — intégration initiale', en:'Lamp site — initial integration', status:'done', date:'30/01 — ≈10h'},
+        {fr:'Retours client (série)', en:'Client feedback (series)', status:'done', date:'12/02 — ≈12h'},
+        {fr:'Série « Site lampe » : 10 tickets de corrections (0.5 à 2h chacun)', en:'“Site lampe” series: 10 fix tickets (0.5 to 2h each)', status:'done', date:'12/02 — ≈10h'},
+        {fr:'Site Lampe SEO — revue du référencement Google', en:'Lamp site SEO — Google indexing review', status:'done', date:'12/02 — ≈3h'},
+        {fr:'Menu sur plusieurs lignes sur mobile (Immediate)', en:'Multi-line menu on mobile (Immediate)', status:'done', date:'03/02'},
+        {fr:'Les liens du menu n’ont pas la bonne police', en:'Menu links don’t use the right font', status:'done', date:'03/02'},
+        {fr:'About page : cookie link, margin du bloc de texte droit', en:'About page: cookie link, right text block margin', status:'done', date:'03/02'},
+        {fr:'Cookie page - font size (Immediate)', en:'Cookie page - font size (Immediate)', status:'done', date:'03/02'},
+        {fr:'Upload, compression et changement des images des produits', en:'Product image upload, compression and replacement', status:'done', date:'16-17/02'},
+        {fr:'Les demandes de la réunion du 16 mars 2026', en:'Requests from the March 16, 2026 meeting', status:'progress', date:'17/03 — ≈16h'},
+        {fr:'Contact page - réglage de padding (Immediate)', en:'Contact page - padding adjustment (Immediate)', status:'done', date:'19/03'},
+        {fr:'Admin catalogue order & admin settings - « Nothing found » (Immediate)', en:'Admin catalogue order & admin settings - “Nothing found” (Immediate)', status:'done', date:'19/03'},
+        {fr:'Traitement de 6 tickets en une journée, configuration en attente de déploiement', en:'6 tickets handled in one day, configuration pending deployment', status:'done', date:'02-03/02'}
+      ]
+    },
+    {
+      tag:'03', name:'Akurat', period:'Janvier + Avril 2026', hours:'≈30h',
+      desc:{fr:"Site RH et recrutement. Deux périodes : janvier (page de détails de jobs avec Tina et Od, tickets) puis un sprint complet en avril — l'intégralité des pages du site reconstruite en une semaine — suivi d'un plan de devis de maintenance en juillet.", en:"HR and recruitment site. Two phases: January (job detail page with Tina and Od, tickets) then a full April sprint — the entire site's pages rebuilt in one week — followed by a maintenance quote plan in July."},
+      tasks:[
+        {fr:'Page de détails de jobs (avec Tina et Od) et traitement de tickets', en:'Job detail page (with Tina and Od) and ticket handling', status:'done', date:'08/01'},
+        {fr:'AKURAT - Header', en:'AKURAT - Header', status:'done', date:'15/04 — ≈1h'},
+        {fr:'AKURAT - Footer (deux tickets, 1h réelle loggée)', en:'AKURAT - Footer (two tickets, 1h real logged)', status:'done', date:'15/04 — ≈3h'},
+        {fr:'AKURAT - Dropdown Menu (deux itérations)', en:'AKURAT - Dropdown Menu (two iterations)', status:'done', date:'15-16/04 — ≈2h'},
+        {fr:'AKURAT - Home page', en:'AKURAT - Home page', status:'progress', date:'15/04 — ≈1h'},
+        {fr:'Akurat - Taas Page (deux tickets)', en:'Akurat - Taas Page (two tickets)', status:'done', date:'15/04 — ≈3.5h'},
+        {fr:'Akurat - Strategic Hiring', en:'Akurat - Strategic Hiring', status:'done', date:'15/04 — ≈3h'},
+        {fr:'Akurat - Jobs Page', en:'Akurat - Jobs Page', status:'done', date:'15/04 — ≈2.5h'},
+        {fr:'Akurat - Contact page', en:'Akurat - Contact page', status:'done', date:'15/04 — ≈1.5h'},
+        {fr:'Akurat - Talent Search Page', en:'Akurat - Talent Search Page', status:'done', date:'15/04 — ≈2h'},
+        {fr:'AKURAT - Page Transitions', en:'AKURAT - Page Transitions', status:'done', date:'15/04 — ≈8h'},
+        {fr:'Footer - texte gras', en:'Footer - bold text', status:'done', date:'21/04'},
+        {fr:'Préparation de la réunion d’Akurat, estimations des tickets, analyse des demandes du client', en:'Akurat meeting preparation, ticket estimations, client request analysis', status:'done', date:'16/04'},
+        {fr:'Recherches et élaboration d’un plan de devis de maintenance du site', en:'Research and drafting of a site maintenance quote plan', status:'done', date:'02/07'}
+      ]
+    },
+    {
+      tag:'04', name:'Hoteli', period:'Janvier — Mars 2026', hours:'≈80h',
+      desc:{fr:"Plateforme de gestion hôtelière. Côté front : pages de dépenses, factures, commande vitrine — puis un chantier de fond : recherches et conception de la plateforme de réservation en ligne (ticket de 40h), génération d'Excel et recherches sur la réservation groupée.", en:"Hotel management platform. Front-end side: expenses pages, invoices, storefront ordering — then a deep workstream: research and design of the online booking platform (40h ticket), Excel generation and group-booking research."},
+      tasks:[
+        {fr:'Front - Page de dépenses', en:'Front - Expenses page', status:'progress', date:'21/01 — ≈16h'},
+        {fr:'Tableau de Facture Clients', en:'Client Invoice Table', status:'done', date:'20/01 — ≈2h'},
+        {fr:'Bouton Fermeture de shift', en:'Shift-close button', status:'done', date:'21/01 — ≈1h'},
+        {fr:'Page de prise de commande vitrine', en:'Storefront order-taking page', status:'done', date:'21/01 — ≈4h'},
+        {fr:'Hoteli Home page export', en:'Hoteli Home page export', status:'done', date:'18/02 — ≈7h'},
+        {fr:'Hoteli-reception home page', en:'Hoteli-reception home page', status:'done', date:'18/02 — ≈5h'},
+        {fr:'Génération d’Excel', en:'Excel generation', status:'done', date:'18-19/02'},
+        {fr:'Recherches : réservation en ligne directe, pages nécessaires à créer', en:'Research: direct online booking, required pages to build', status:'done', date:'20/02 — ≈5h'},
+        {fr:'Hoteli Plateforme de réservation (conception + travail Fév-Mars)', en:'Hoteli booking platform (design + Feb-Mar work)', status:'progress', date:'20/02 — ≈40h'},
+        {fr:'Recherches sur la réservation groupée', en:'Group booking research', status:'done', date:'02-04/03'},
+        {fr:'Aide de Time sur Hoteli, traitement de tickets multiples', en:'Support to Time on Hoteli, multiple ticket handling', status:'done', date:'janvier'}
+      ]
+    },
+    {
+      tag:'05', name:'Aegles / Eagles', period:'Juin — Juillet 2026', hours:'≈25h + tests',
+      desc:{fr:"Site e-commerce Shopify skincare. Blocks lourds de la homepage et de l'Academy, PDP mobile, puis phase finale : tests du site en production et traitement des bugs Immediate — jusqu'à 4 tickets de bugs corrigés dans la même journée.", en:"Shopify skincare e-commerce site. Heavy homepage and Academy blocks, mobile PDP, then the final phase: production testing and Immediate bug handling — up to 4 bug tickets fixed in a single day."},
+      tasks:[
+        {fr:'Front - Homepage Block 3 « The Clear Skin System »', en:'Front - Homepage Block 3 “The Clear Skin System”', status:'done', date:'22/06 — ≈10h'},
+        {fr:'Front - Aegles Academy - Block 1', en:'Front - Aegles Academy - Block 1', status:'done', date:'19/06 — ≈6h'},
+        {fr:'Front - PDP Mobile : liste des images produit + rating avec abonnement sous l’image', en:'Front - Mobile PDP: product image list + rating with subscription under the image', status:'done', date:'17/06 — ≈6h'},
+        {fr:'Tests, corrections des blocks et création d’un block complet oublié', en:'Tests, block fixes and creation of a forgotten complete block', status:'done', date:'26/06'},
+        {fr:'Tests du site en production et correction des bugs trouvés', en:'Production site testing and bug fixing', status:'done', date:'29-30/06'},
+        {fr:'4 tickets de bugs traités en une journée', en:'4 bug tickets handled in one day', status:'done', date:'01/07'},
+        {fr:'hp - bloc 4 + PDP - the clear skin system (Bug Immediate)', en:'hp - block 4 + PDP - the clear skin system (Immediate bug)', status:'done', date:'01/07'},
+        {fr:'Homepage - mobile (Immediate)', en:'Homepage - mobile (Immediate)', status:'done', date:'01/07'},
+        {fr:'Footer - Logo - mobile (Immediate)', en:'Footer - Logo - mobile (Immediate)', status:'done', date:'01/07'},
+        {fr:'Menu - mobile - z-index', en:'Menu - mobile - z-index', status:'done', date:'02/07'}
+      ]
+    },
+    {
+      tag:'06', name:'Medlog', period:'Juin 2026', hours:'≈20h',
+      desc:{fr:"Site sous Payload : dynamisation complète avec création des collections, séparation et reconstitution des blocks, étude du projet et estimation des tickets restants (conjointement avec Eagle).", en:"Payload-based site: full dynamisation with collection creation, block separation and rebuild, project study and estimation of remaining tickets (jointly with Eagle)."},
+      tasks:[
+        {fr:'Dynamisation du site avec la création des collections', en:'Site dynamisation with collection creation', status:'done', date:'01-03/06'},
+        {fr:'Séparation des blocks, reconstitution des blocks', en:'Block separation, block rebuild', status:'done', date:'03-04/06'},
+        {fr:'Suite de la dynamisation — ticket 13130', en:'Dynamisation continued — ticket 13130', status:'progress', date:'15-18/06'},
+        {fr:'EAGLE + Medlog : étude du projet, création et estimation des tickets', en:'EAGLE + Medlog: project study, ticket creation and estimation', status:'done', date:'15/06'}
+      ]
+    },
+    {
+      tag:'07', name:'Cave à vin', period:'Janvier 2026', hours:'≈21h',
+      desc:{fr:"Site e-commerce d'un caviste : déploiement, correction des erreurs et implémentation des blocks — le premier chantier de l'année, livré en une semaine.", en:"Wine merchant e-commerce site: deployment, error fixing and block implementation — the year's first project, delivered within a week."},
+      tasks:[
+        {fr:'Déploiement et correction des erreurs, implémentation des blocks', en:'Deployment and error fixing, block implementation', status:'done', date:'05-06/01 — ≈10h'},
+        {fr:'Traitement de tickets sur AKURAT en parallèle', en:'AKURAT ticket handling in parallel', status:'done', date:'06/01'},
+        {fr:'Finalisation — « fini, tout est ok »', en:'Finalization — “done, everything ok”', status:'done', date:'07/01 — ≈11h'}
+      ]
+    },
+    {
+      tag:'08', name:'Revolt', period:'Avril 2026', hours:'≈40h',
+      desc:{fr:"Prise en main complète du projet Revolt : deux semaines d'appropriation du code, de l'architecture et des process, avec un meet Swissfls et des allers-retours avec Oloid en parallèle.", en:"Full Revolt project onboarding: two weeks absorbing the codebase, architecture and processes, with a Swissfls meet and Oloid back-and-forth in parallel."},
+      tasks:[
+        {fr:'Prise en main de Revolt (sessions quotidiennes)', en:'Revolt onboarding (daily sessions)', status:'done', date:'01-08/04 — ≈40h'},
+        {fr:'Meet sur le Swissfls', en:'Swissfls meet', status:'done', date:'07/04'},
+        {fr:'Résolution du problème de déploiement sur BTP avec Mr Felix', en:'BTP deployment issue resolved with Mr Felix', status:'done', date:'08/04'}
+      ]
+    },
+    {
+      tag:'09', name:'Formations & encadrement', period:'Mars — Juillet 2026', hours:'≈60h',
+      desc:{fr:"Montée en compétence continue — React Native (pour prendre en main EZah), Payload CMS, Google Analytics & Meta Pixel — puis passage de l'autre côté : formation de Pipinio à l'intégration statique et au front, formation Flutter des stagiaires, et plan de formation Payload pour Felix et TDE.", en:"Continuous skill-building — React Native (to take over EZah), Payload CMS, Google Analytics & Meta Pixel — then switching sides: training Pipinio on static integration and front-end, Flutter training for the interns, and a Payload training plan for Felix and TDE."},
+      tasks:[
+        {fr:'Formation React Native — pour prendre en main EZah', en:'React Native training — to take over EZah', status:'done', date:'16-27/03'},
+        {fr:'Formation Payload CMS — recherches approfondies', en:'Payload CMS training — in-depth research', status:'done', date:'26-30/03'},
+        {fr:'Formation Google Analytics', en:'Google Analytics training', status:'done', date:'08-09/04'},
+        {fr:'Formation Google Analytics & Meta Pixel', en:'Google Analytics & Meta Pixel training', status:'done', date:'13-15/04'},
+        {fr:'Point de formation de Pipinio sur l’intégration statique', en:'Pipinio training session on static integration', status:'done', date:'25/06 — 1h40'},
+        {fr:'Points de formation front avec Pipinio', en:'Front-end training sessions with Pipinio', status:'done', date:'03-06/07'},
+        {fr:'Formation Flutter des stagiaires : installation de l’environnement, configurations', en:'Interns’ Flutter training: environment install, configurations', status:'done', date:'03-06/07'},
+        {fr:'Point avec Fidèle sur la formation en développement mobile avec Flutter', en:'Session with Fidèle on mobile development training with Flutter', status:'done', date:'02/07'},
+        {fr:'Élaboration du plan de formation Payload pour Felix et TDE', en:'Payload training plan drafted for Felix and TDE', status:'progress', date:'06/07'}
+      ]
+    },
+    {
+      tag:'10', name:'Autres chantiers', period:'Janvier — Juillet 2026', hours:'≈55h',
+      desc:{fr:"Le reste du terrain couvert dans l'année : site JA, Aonic, Can Soleil, Dealy, recherches CNI et Pharmacie, démarrage du site Digitaleurs.", en:"The rest of the ground covered during the year: JA site, Aonic, Can Soleil, Dealy, CNI and Pharmacy research, Digitaleurs website kickoff."},
+      tasks:[
+        {fr:'Site JA : intégration puis adaptation du site à la maquette', en:'JA site: integration then adaptation to the mockup', status:'done', date:'19/01 + 05/03 — ≈17h'},
+        {fr:'Aonic : correction du block nutritions', en:'Aonic: nutrition block fix', status:'done', date:'29/01 — ≈3h'},
+        {fr:'Aonic : Front « Build for your whole health » et « Clean complete delicious nutrition »', en:'Aonic: Front “Build for your whole health” and “Clean complete delicious nutrition”', status:'new', date:'28/04 — ≈12h'},
+        {fr:'Can Soleil : résolution du problème de preview CSS des blocks, correction de formulaire, tests', en:'Can Soleil: block CSS preview issue resolved, form fix, tests', status:'done', date:'19-24/03'},
+        {fr:'Session avec Felix et Trix : site de réservation des meubles d’événements (estimation)', en:'Session with Felix and Trix: event-furniture booking site (estimation)', status:'done', date:'25/03'},
+        {fr:'DEALY : suivi quotidien et points d’avancement des projets', en:'DEALY: daily follow-up and project progress check-ins', status:'done', date:'22/06-03/07'},
+        {fr:'Recherches sur le projet CNI', en:'CNI project research', status:'done', date:'03/07'},
+        {fr:'Recherches Pharmacie : réservation en ligne, pages nécessaires, plateforme', en:'Pharmacy research: online booking, required pages, platform', status:'progress', date:'24/06'},
+        {fr:'Site Digitaleurs : démarrage du site et configuration', en:'Digitaleurs website: kickoff and configuration', status:'progress', date:'06/07'}
+      ]
+    }
+  ]
+};
+PERSON.tickets = window.TICKETS;
+PERSON.advanced = {"tiles": [{"num": "97", "fr": "Jours actifs tracés", "en": "Active days tracked"}, {"num": "4,1 h", "fr": "Moyenne par jour loggé", "en": "Average per logged day", "note": "Feuille peu remplie — le rythme réel est plus élevé.", "noteEn": "Sparse timesheet — the real pace is higher."}, {"num": "1 %", "fr": "Tickets avec temps saisi", "en": "Tickets with logged time", "note": "1 ticket sur 82 — le temps estimé fait foi (≈316 h).", "noteEn": "1 of 82 tickets — estimated time is the reference (≈316h)."}], "collabs": [{"n": "Felix / Fz", "d": "×7"}, {"n": "Mr Cc", "d": "×4"}, {"n": "Pipinio", "d": "×4"}, {"n": "Time", "d": "×3"}, {"n": "Stagiaires", "d": "×3"}, {"n": "Anne", "d": "×2"}, {"n": "Tina", "d": "×2"}, {"n": "Elsira", "d": "×2"}]};
+
+renderBilan(PERSON);
+</script>
+</body>
+</html>

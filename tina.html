@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr" data-person="tina">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elsira Emanuella BOUANGA-NIAMBI — Bilan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <a class="back-link" href="index.html"><span data-fr>← Équipe</span><span data-en>← Team</span></a>
+      E. <strong>BOUANGA-NIAMBI</strong>&nbsp;<span data-fr>· Bilan 2026</span><span data-en>· Year in Review 2026</span>
+    </div>
+    <div class="toggles">
+      <div class="lang-toggle">
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button id="btn-theme" class="theme-toggle" onclick="toggleTheme()" title="Thème">☾</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span data-fr>Janvier — Juillet 2026</span><span data-en>January — July 2026</span></div>
+    <h1 class="hero-title">
+      <span data-fr>Sept mois de travail <em>minutieux</em>, de sites livrés et de défis techniques relevés.</span>
+      <span data-en>Seven months of <em>meticulous</em> work, sites delivered, and technical challenges overcome.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr>Elsira Emanuella BOUANGA-NIAMBI (« Tina ») — Développeuse Front-End. Ce document retrace, projet par projet, le travail accompli entre janvier et juillet 2026 chez Digitaleurs : intégrations complexes, corrections de bugs, animations, refonte de composants Shopify et cadrage de nouveaux projets — avec la feuille de temps la plus complète de l'équipe : 963 heures tracées.</span>
+      <span data-en>Elsira Emanuella BOUANGA-NIAMBI (“Tina”) — Front-End Developer. This document traces, project by project, the work accomplished between January and July 2026 at Digitaleurs: complex integrations, bug fixes, animations, Shopify component rebuilds and new project scoping — with the team's most complete timesheet: 963 hours tracked.</span>
+    </p>
+    <div class="hero-meta" id="hero-meta"></div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title"><span data-fr>Vue d'ensemble</span><span data-en>Overview</span></h2>
+      <p class="section-desc">
+        <span data-fr>Répartition du temps suivi et volume de tickets traités sur les sept mois.</span>
+        <span data-en>Distribution of tracked time and volume of tickets handled across the seven months.</span>
+      </p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par mois</span><span data-en>Hours logged per month</span></h3>
+        <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition du temps par projet</span><span data-en>Time by project</span></h3>
+        <div class="chart-wrap"><canvas id="chartProjects"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tickets Redmine par projet</span><span data-en>Redmine tickets per project</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTickets"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Statut des 62 tickets</span><span data-en>Status of the 62 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartStatus"></canvas></div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Note de lecture :</strong> les heures proviennent de la feuille de suivi quotidienne — remplie ici avec une régularité remarquable (7 mois quasi complets). Quand un ticket Redmine n'a pas de temps passé renseigné, son <strong>temps estimé</strong> est utilisé et marqué « ≈ ». Une partie du travail (BTP, Pharmacie métier, Formation GP, cadrages) n'a pas donné lieu à des tickets : la feuille de temps en garde la trace.</span>
+      <span data-en><strong>How to read this:</strong> hours come from the daily tracking sheet — filled in here with remarkable consistency (nearly 7 complete months). When a Redmine ticket has no logged time, its <strong>estimated time</strong> is used and flagged with "≈". Part of the work (BTP, Pharmacy business, PM training, scoping) has no tickets: the timesheet keeps the record.</span>
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title"><span data-fr>Le journal de l'année</span><span data-en>The year's log</span></h2>
+      <p class="section-desc"><span data-fr>Mois par mois, les chantiers ouverts et les temps forts.</span><span data-en>Month by month, the projects in motion and the highlights.</span></p>
+    </div>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title"><span data-fr>Projets en détail</span><span data-en>Projects in detail</span></h2>
+      <p class="section-desc"><span data-fr>Chaque chantier, son contexte, et les tâches marquantes issues du suivi Redmine et de la feuille de temps.</span><span data-en>Each project, its context, and notable tasks drawn from Redmine tracking and the timesheet.</span></p>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+  </section>
+
+  <section class="section" id="tickets">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title"><span data-fr>Tous les tickets Redmine</span><span data-en>All Redmine tickets</span></h2>
+      <p class="section-desc"><span data-fr>La liste complète, filtrable par projet, statut et priorité. Le temps affiché est le temps passé ; « ≈ » indique le temps estimé utilisé à défaut, « — » un ticket traité sans saisie de temps.</span><span data-en>The complete list, filterable by project, status and priority. The time shown is time spent; "≈" marks estimated time used as fallback, "—" a ticket handled without time entry.</span></p>
+    </div>
+    <div class="ticket-controls">
+      <input type="search" id="t-search" placeholder="Rechercher… / Search…">
+      <select id="t-proj"><option value="">Projet / Project</option></select>
+      <select id="t-status"><option value="">Statut / Status</option></select>
+      <select id="t-prio"><option value="">Priorité / Priority</option></select>
+      <span class="ticket-count" id="t-count"></span>
+    </div>
+    <div class="ticket-table-wrap" id="ticket-table"></div>
+  </section>
+
+  <section class="section" id="advanced">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title"><span data-fr>Statistiques avancées</span><span data-en>Advanced statistics</span></h2>
+      <p class="section-desc"><span data-fr>Rythme de travail, tickets les plus lourds, précision d'estimation, collaborations et aléas du terrain — calculés depuis la feuille de temps et les tickets. Quand une statistique n'apparaît pas ici, c'est que les données ne permettent pas de la calculer honnêtement.</span><span data-en>Work rhythm, heaviest tickets, estimation accuracy, collaborations and field hazards — computed from the timesheet and tickets. When a statistic is missing here, the data doesn't allow computing it honestly.</span></p>
+    </div>
+    <div class="stat-tiles" id="adv-tiles"></div>
+    <div class="charts-grid" style="margin-top:24px;grid-template-columns:1fr;">
+      <div class="chart-card">
+        <h3><span data-fr>Top 10 des tickets les plus lourds (« ≈ » = temps estimé)</span><span data-en>Top 10 heaviest tickets ("≈" = estimated time)</span></h3>
+        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid three" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tâches vs Bugs</span><span data-en>Tasks vs Bugs</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTracker"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition par priorité</span><span data-en>Breakdown by priority</span></h3>
+        <div class="chart-wrap short"><canvas id="chartPrio"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Estimé vs réel — 47 tickets</span><span data-en>Estimated vs actual — 47 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartEstim"></canvas></div>
+      </div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Collaborations les plus fréquentes (mentions dans la feuille de temps)</span><span data-en>Most frequent collaborations (mentions in the timesheet)</span></h3>
+      <div class="proj-chips" id="adv-collabs"></div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Aléas du terrain</span><span data-en>Field hazards</span></h3>
+      <div class="proj-chips" id="adv-incidents"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title"><span data-fr>Compétences mobilisées</span><span data-en>Skills exercised</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Front-End</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML / CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React</span><span class="skill-tag">Next.js</span><span class="skill-tag">Animations CSS</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>Shopify</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Liquid</span><span class="skill-tag">Sections Shopify</span><span class="skill-tag">PDP</span><span class="skill-tag">Metaobjects</span><span class="skill-tag">Minicart</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Intégration UI</span><span data-en>UI Integration</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma → Code</span><span class="skill-tag">Responsive</span><span class="skill-tag">Tablet / Mobile</span><span class="skill-tag">Header / Footer</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Tests & UAT</span><span data-en>Testing & UAT</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">UAT Aonic</span><span class="skill-tag">Tests Desktop</span><span class="skill-tag">Cross-device</span><span class="skill-tag">Bug fixes</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Cadrage & gestion</span><span data-en>Scoping & management</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Cadrage Cagecfi</span><span class="skill-tag">Estimations</span><span class="skill-tag">Formation GP</span><span class="skill-tag">Cahier des charges</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Collaboration</span><span data-en>Collaboration</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Git / GitLab</span><span class="skill-tag">Redmine</span><span class="skill-tag">Gestion de tickets</span><span class="skill-tag">Pair-programming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="closing">
+    <div class="closing">
+      <p>
+        <span data-fr>Des composants conçus avec soin, des bugs traqués avec rigueur, des interfaces livrées qui fonctionnent — le bilan honnête d'une année pleinement investie.</span>
+        <span data-en>Components crafted with care, bugs tracked with rigor, working interfaces delivered — the honest record of a fully invested year.</span>
+      </p>
+      <div class="sign">— Elsira Emanuella BOUANGA-NIAMBI</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span data-fr>Document généré à partir du suivi Redmine et de la feuille de temps, janvier–juillet 2026.</span>
+  <span data-en>Document generated from Redmine tracking and the timesheet, January–July 2026.</span>
+</footer>
+
+<script src="assets/tickets-tina.js"></script>
+<script>
+const PERSON = {
+  heroMeta: [
+    {num:'963h', fr:'Heures loggées', en:'Hours logged'},
+    {num:'62', fr:'Tickets Redmine', en:'Redmine tickets'},
+    {num:'≈252h', fr:'Temps sur tickets', en:'Ticket time'},
+    {num:'15+', fr:'Projets couverts', en:'Projects covered'}
+  ],
+
+  monthly: [
+    {m:'Jan', mEn:'Jan', hours:142},
+    {m:'Fév', mEn:'Feb', hours:155},
+    {m:'Mar', mEn:'Mar', hours:169},
+    {m:'Avr', mEn:'Apr', hours:157},
+    {m:'Mai', mEn:'May', hours:129},
+    {m:'Juin', mEn:'Jun', hours:178},
+    {m:'Juil', mEn:'Jul', hours:32}
+  ],
+
+  projectHours: [
+    {name:'Oloid', hours:185},
+    {name:'Hoteli', hours:115},
+    {name:'Akurat', hours:110},
+    {name:'Aegles', hours:100},
+    {name:'Pharmacie métier', hours:79},
+    {name:'Aonic', hours:74},
+    {name:'Points & réunions', hours:62},
+    {name:'Formation GP', hours:58},
+    {name:'BTP', hours:36},
+    {name:'Site ERP', hours:36},
+    {name:'Cagecfi', hours:32},
+    {name:'Autres', hours:76}
+  ],
+
+  ticketsPerProject: [
+    {proj:'Aegles', n:21},
+    {proj:'Oloid', n:21},
+    {proj:'Aoniclife', n:8},
+    {proj:'Akurat', n:7},
+    {proj:'Hoteli', n:4},
+    {proj:'Formation ERP', n:1}
+  ],
+
+  statusCounts: {
+    fr:['Résolu / Fermé','En cours','Nouveau'],
+    en:['Resolved / Closed','In progress','New'],
+    data:[54,3,5]
+  },
+
+  log: [
+    {
+      month:'Janvier', monthEn:'January',
+      note:{fr:"Démarrage sur Akurat : recherches sur le plugin Job Manager, page de détails de job (ticket de 11h), page Talent Search avec Ak et Od. Gros mois Hoteli en parallèle : ajouts d'éléments, tests avec Anne, résolution de tickets (label état de chambre, redirection admin, badge « réservé »). Estimations COORAXIS et CJET.", en:"Kickoff on Akurat: Job Manager plugin research, job detail page (11h ticket), Talent Search page with Ak and Od. A big Hoteli month in parallel: element additions, tests with Anne, ticket resolution (room status label, admin redirect, “reserved” badge). COORAXIS and CJET estimations."},
+      projects:[{n:'Akurat', d:'~45h'},{n:'Hoteli', d:'~55h'},{n:'Sites ERP / lampe / JA', d:'~25h'}]
+    },
+    {
+      month:'Février', monthEn:'February',
+      note:{fr:"Mois centré sur les retours clients Akurat : corrections typographiques sur tout le site (15h), formulaires (11h), lignes du cahier de retours. Contributions au site ERP (retours Od et Fz), au site noir (JA) et TP React de dynamisation. Fin de mois sur les espaces publics Hoteli.", en:"Month focused on Akurat client feedback: sitewide typography fixes (15h), forms (11h), feedback-sheet line items. Contributions to the ERP site (Od and Fz feedback), the JA dark site and a React dynamisation exercise. Month-end on Hoteli public spaces."},
+      projects:[{n:'Akurat', d:'~65h'},{n:'Site ERP', d:'~30h'},{n:'Site JA', d:'~25h'},{n:'Hoteli', d:'~20h'}]
+    },
+    {
+      month:'Mars', monthEn:'March',
+      note:{fr:"Lancement d'Oloid : estimation et création des tickets avec Mr Felix, initialisation, intégration statique du header (8h) et du footer, animations header, dynamisations. Travail sur les espaces publics Hoteli, démarrage d'Aonic et du projet BTP avec Anne.", en:"Oloid launch: estimation and ticket creation with Mr Felix, initialization, static header (8h) and footer integration, header animations, dynamisations. Hoteli public spaces work, Aonic kickoff and the BTP project start with Anne."},
+      projects:[{n:'Oloid', d:'~55h'},{n:'Aonic', d:'~40h'},{n:'BTP', d:'~30h'},{n:'Hoteli', d:'~25h'}]
+    },
+    {
+      month:'Avril', monthEn:'April',
+      note:{fr:"Mois très dense : formation GP (gestion de projet, plusieurs semaines), Pharmacie métier (recherches et cahier des charges), BTP (finalisation du copyright), projet Studio (prise en main, génération du site, bouton de configuration), Navi Togo, audit du site Aonic et prise en main de Revolt.", en:"A very dense month: PM training (several weeks), Pharmacy business (research and specification), BTP (copyright finalization), Studio project (onboarding, site generation, configuration button), Navi Togo, Aonic site audit and Revolt onboarding."},
+      projects:[{n:'Formation GP', d:'~55h'},{n:'Pharmacie métier', d:'~50h'},{n:'Projet Studio', d:'~15h'},{n:'Navi Togo', d:'~16h'}]
+    },
+    {
+      month:'Mai', monthEn:'May',
+      note:{fr:"Oloid reprend intensivement : initialisation CSS (8h), Hero & Header (16h de ticket !), blocks About Who/What, page Projects (14h), Contact, cookie banner, animations header (5h) puis le chantier Animations. Points de gestion de projet réguliers avec Irène. Fin de mois : maquettes Cagecfi et premiers tickets Aegles.", en:"Oloid resumes intensively: CSS initialization (8h), Hero & Header (a 16h ticket!), About Who/What blocks, Projects page (14h), Contact, cookie banner, header animations (5h) then the Animations workstream. Regular project-management sessions with Irène. Month-end: Cagecfi mockups and first Aegles tickets."},
+      projects:[{n:'Oloid', d:'~95h'},{n:'Cagecfi', d:'~7h'},{n:'Aegles', d:'~8h'}]
+    },
+    {
+      month:'Juin', monthEn:'June',
+      note:{fr:"Aegles prend tout l'espace : Pricing block (12h), Academy Block 2 + modale (11h), Header Desktop/Mobile (12h), barre latérale vidéos, corrections UAT Aonic (Lines 155-157, dont un bug de header difficile résolu avec Time). Contributions Hoteli (couleurs restaurant, plannings admin) et retours Fz sur Oloid.", en:"Aegles takes center stage: Pricing block (12h), Academy Block 2 + modal (11h), Desktop/Mobile Header (12h), video sidebar, Aonic UAT fixes (Lines 155-157, incl. a difficult header bug solved with Time). Hoteli contributions (restaurant colors, admin schedules) and Fz feedback on Oloid."},
+      projects:[{n:'Aegles', d:'~90h'},{n:'Aonic UAT', d:'~35h'},{n:'Hoteli', d:'~12h'},{n:'Oloid retours', d:'~10h'}]
+    },
+    {
+      month:'Juillet', monthEn:'July',
+      note:{fr:"Derniers correctifs Aegles en priorité Immediate — huit tickets le 1er juillet (homepage desktop/tablet/mobile, PDP floating bar, minicart overlay, swiper) — puis bascule sur le cadrage du projet Cagecfi avec Anne et le travail sur Inedit.", en:"Final Immediate-priority Aegles fixes — eight tickets on July 1st (desktop/tablet/mobile homepage, PDP floating bar, minicart overlay, swiper) — then a switch to Cagecfi project scoping with Anne and work on Inedit."},
+      projects:[{n:'Cagecfi', d:'~25h'},{n:'Aegles', d:'~7h'}]
+    }
+  ],
+
+  projects: [
+    {
+      tag:'01', name:'Oloid', period:'Mars — Juin 2026', hours:'≈185h',
+      desc:{fr:"Site vitrine multi-pages pour un contractant en aménagement commercial. Chantier majeur porté côté front par Elsira : de l'initialisation CSS jusqu'aux animations du header, en passant par tous les blocks de la Home, About et Projects.", en:"Multi-page showcase site for a commercial fit-out contractor. A major workstream carried on the front-end side by Elsira: from CSS initialization through header animations, covering all Home, About and Projects blocks."},
+      tasks:[
+        {fr:"Estimation et création des tickets avec Mr Felix", en:"Estimation and ticket creation with Mr Felix", status:'done', date:'04-05/05'},
+        {fr:"Initialisation du projet", en:"Project initialization", status:'done', date:'06/03 — 6h'},
+        {fr:"Initialisation CSS", en:"CSS initialization", status:'done', date:'05/05 — 8h'},
+        {fr:"Intégration statique du Header", en:"Static Header integration", status:'done', date:'09/03 — 8h'},
+        {fr:"Intégration statique du Footer", en:"Static Footer integration", status:'done', date:'10/03 — 3h'},
+        {fr:"Animations Header + dynamisations Header et Footer", en:"Header animations + Header and Footer dynamisations", status:'done', date:'10-11/03 — 5.5h'},
+        {fr:"Front - Hero & Header (bloc principal)", en:"Front - Hero & Header (main block)", status:'done', date:'06/05 — 16h'},
+        {fr:"HEADER ANIMATION (haute priorité)", en:"HEADER ANIMATION (high priority)", status:'done', date:'19/05 — 5h'},
+        {fr:"Front - HP Block 3 « The client and design come first »", en:"Front - HP Block 3 “The client and design come first”", status:'done', date:'08/05 — 5h'},
+        {fr:"Front - HP - Cookie banner", en:"Front - HP - Cookie banner", status:'done', date:'18/05 — 4h'},
+        {fr:"Front - About Block 1, Block 3 « Our mission », Block 4 « Words from our clients »", en:"Front - About Block 1, Block 3 “Our mission”, Block 4 “Words from our clients”", status:'done', date:'11/05 — 8h'},
+        {fr:"Front - About2 Block 3 « Featured projects »", en:"Front - About2 Block 3 “Featured projects”", status:'done', date:'11/05 — 6h'},
+        {fr:"Front - Page 4 « Our projects are an opening… » — le ticket le plus lourd", en:"Front - Page 4 “Our projects are an opening…” — the heaviest ticket", status:'done', date:'13/05 — 14h'},
+        {fr:"Front - Page 6 Contact « We'd love to hear from you »", en:"Front - Page 6 Contact “We'd love to hear from you”", status:'done', date:'18/05 — 3h'},
+        {fr:"HP - Header : contenu non aligné, bugs Desktop, bouton CTA mal aligné, cta padding", en:"HP - Header: misaligned content, Desktop bugs, misaligned CTA button, cta padding", status:'done', date:'03/06'},
+        {fr:"Tests internes - Desktop", en:"Internal Desktop tests", status:'done', date:'17/03'},
+        {fr:"Application des retours Fz (plusieurs sessions)", en:"Application of Fz feedback (multiple sessions)", status:'done', date:'01-04/06'},
+        {fr:"ANIMATIONS (chantier)", en:"ANIMATIONS (workstream)", status:'progress', date:'15/05 — ≈24h'}
+      ]
+    },
+    {
+      tag:'02', name:'Aegles', period:'Mai — Juillet 2026', hours:'≈100h · 21 tickets',
+      desc:{fr:"Site e-commerce Shopify skincare. Intégration de composants complexes sur la page produit (PDP), l'Academy et le Header — les tickets Aegles sont parmi les plus lourds en heures de l'année, jusqu'à la salve de correctifs Immediate du 1er juillet.", en:"Shopify skincare e-commerce site. Complex component integration on the product page (PDP), Academy and Header — Aegles tickets are among the year's heaviest in hours, up to the July 1st volley of Immediate fixes."},
+      tasks:[
+        {fr:"Front - PDP - Pricing block - Card around the subscription", en:"Front - PDP - Pricing block - Card around the subscription", status:'done', date:'17/06 — 12h'},
+        {fr:"Front - Desktop / Mobile - Header (composant complet)", en:"Front - Desktop / Mobile - Header (full component)", status:'done', date:'22/06 — 12h'},
+        {fr:"Front - Aegles Academy - Block 2 + Modale", en:"Front - Aegles Academy - Block 2 + Modal", status:'done', date:'18-19/06 — 11h'},
+        {fr:"Affichage de la barre horizontale par écran (3 vidéos desktop, 2 tablette, 1 mobile)", en:"Horizontal bar display per screen (3 videos desktop, 2 tablet, 1 mobile)", status:'done', date:'24/06 — 5h'},
+        {fr:"Academy Block 2 : vidéo plutôt qu'un lien YouTube", en:"Academy Block 2: video instead of a YouTube link", status:'done', date:'25/06 — 2h'},
+        {fr:"Bug URGENT - PDP - product pricing blocks", en:"URGENT bug - PDP - product pricing blocks", status:'done', date:'24/06 — 1h'},
+        {fr:"PDP - Cart : suppression des lignes parasites autour du panier produit", en:"PDP - Cart: stray lines around the product cart removed", status:'done', date:'17/06 — 1h'},
+        {fr:"Minicart - close", en:"Minicart - close", status:'done', date:'01/06 — 0.25h'},
+        {fr:"Phase 1 : Mobile description dropdown, Desktop homepage quote marks", en:"Phase 1: Mobile description dropdown, Desktop homepage quote marks", status:'done', date:'27-28/05'},
+        {fr:"Homepage desktop : « confidence », « A clear skin treatment you can trust »", en:"Homepage desktop: “confidence”, “A clear skin treatment you can trust”", status:'done', date:'01/07 — 1h'},
+        {fr:"Homepage mobile : « Have you tried everything », « rated trustpilot »", en:"Homepage mobile: “Have you tried everything”, “rated trustpilot”", status:'done', date:'01/07 — 1h'},
+        {fr:"Homepage tablet : « Get your confidence »", en:"Homepage tablet: “Get your confidence”", status:'done', date:'01/07 — 1h'},
+        {fr:"PDP - floating bar add to cart (tablet & mobile), desktop swiper main", en:"PDP - floating bar add to cart (tablet & mobile), desktop main swiper", status:'done', date:'01/07 — 1h'},
+        {fr:"Minicart overlay - couleur incorrecte", en:"Minicart overlay - incorrect color", status:'done', date:'01/07 — 0.5h'},
+        {fr:"Tests finaux (sessions des 29-30/06)", en:"Final tests (June 29-30 sessions)", status:'done', date:'29-30/06'}
+      ]
+    },
+    {
+      tag:'03', name:'Akurat', period:'Janvier — Février 2026', hours:'≈110h',
+      desc:{fr:"Site RH et recrutement. Recherches sur le plugin Job Manager, intégration de la page de détails d'une offre d'emploi, page Talent Search avec Ak et Od, puis une longue phase de retours client : typographie, formulaires, responsive.", en:"HR and recruitment site. Job Manager plugin research, job offer detail page integration, Talent Search page with Ak and Od, followed by a long client-feedback phase: typography, forms, responsive."},
+      tasks:[
+        {fr:"Recherches Job Manager et présentation des tutos à Mr Felix", en:"Job Manager research and tutorial presentation to Mr Felix", status:'done', date:'06/01'},
+        {fr:"Job Offer - Page de détails de job", en:"Job Offer - Job detail page", status:'done', date:'07/01 — 11h'},
+        {fr:"Réajuster la page de détails quand le job a expiré", en:"Detail page adjustment when the job has expired", status:'done', date:'16/02 — ≈3h'},
+        {fr:"Page Talent Search avec Ak et Od (4 sessions)", en:"Talent Search page with Ak and Od (4 sessions)", status:'done', date:'07-09/01'},
+        {fr:"Les fonts sur tout le site (desktop, tablet, mobile) — ligne 9", en:"Fonts across the entire site (desktop, tablet, mobile) — line 9", status:'done', date:'12/02 — 15h'},
+        {fr:"Formulaire — ligne 11", en:"Form — line 11", status:'done', date:'10/02 — 11h'},
+        {fr:"Lignes 19, 25 et 31 du cahier de retours", en:"Feedback-sheet lines 19, 25 and 31", status:'done', date:'09-10/02 — 8.5h'},
+        {fr:"Retours clients — sessions intensives de février", en:"Client feedback — intensive February sessions", status:'done', date:'09-25/02 — ~40h'}
+      ]
+    },
+    {
+      tag:'04', name:'Hoteli', period:'Janvier + Juin 2026', hours:'≈115h',
+      desc:{fr:"Plateforme de gestion hôtelière. Trois périodes : janvier (intensif — ajouts, tests avec Anne, résolution de tickets), février-mars (espaces publics), juin (couleurs restaurant, plannings dans l'admin).", en:"Hotel management platform. Three phases: January (intensive — additions, tests with Anne, ticket resolution), February-March (public spaces), June (restaurant colors, admin schedules)."},
+      tasks:[
+        {fr:"Front - Redirection vers page Admin", en:"Front - Redirect to Admin page", status:'done', date:'21/01 — 7.5h'},
+        {fr:"Front - Label état de chambre", en:"Front - Room status label", status:'done', date:'21/01 — 5h'},
+        {fr:"Couleur texte badge « réservé »", en:"“Reserved” badge text color", status:'done', date:'21/01 — 0.5h'},
+        {fr:"Front - Sélection client sur formulaire de réservation", en:"Front - Client selection on the booking form", status:'progress', date:'22/01 — ≈3h'},
+        {fr:"Ajouts d'éléments et tests avec Anne et Mr Felix (sessions Jan 12-23)", en:"Element additions and tests with Anne and Mr Felix (Jan 12-23 sessions)", status:'done', date:'12-23/01 — ~55h'},
+        {fr:"Travail sur les espaces publics (fin février — début mars)", en:"Public spaces work (late February — early March)", status:'done', date:'26/02-04/03 — ~40h'},
+        {fr:"Problème de couleur des boutons et du menu dans Restaurant", en:"Button color and menu issue in Restaurant", status:'done', date:'05/06 — 1.3h'},
+        {fr:"Plannings dans l'admin : liste et page d'ajout", en:"Admin schedules: list and add page", status:'done', date:'08/06 — ~8h'}
+      ]
+    },
+    {
+      tag:'05', name:'Aonic / Aoniclife', period:'Mars + Juin 2026', hours:'≈74h · 8 tickets',
+      desc:{fr:"Corrections UAT et front-end sur le site Shopify Plus Aonic : bannières, header mobile, tickets de la feuille UAT — dont un bug de switch de header particulièrement difficile, résolu en binôme avec Time.", en:"UAT and front-end fixes on the Aonic Shopify Plus site: banners, mobile header, UAT sheet tickets — including a particularly difficult header-switching bug, solved pairing with Time."},
+      tasks:[
+        {fr:"UAT Line 155 - Free shipping banner disparaît au scroll", en:"UAT Line 155 - Free shipping banner disappears on scroll", status:'done', date:'09/06 — 8h'},
+        {fr:"UAT Line 156 - On mobile (suite, fin et push avec Time et Mr Felix)", en:"UAT Line 156 - On mobile (continued, finished and pushed with Time and Mr Felix)", status:'progress', date:'15/06 — 14h cumulées'},
+        {fr:"UAT Line 157 - Changes", en:"UAT Line 157 - Changes", status:'done', date:'16/06 — 6h'},
+        {fr:"Bar de promotion", en:"Promotion bar", status:'done', date:'09/06'},
+        {fr:"Menu sur mobile, ticket header mobile", en:"Mobile menu, mobile header ticket", status:'done', date:'10-11/06'},
+        {fr:"Correction du block nutritions", en:"Nutrition block fix", status:'done', date:'29/01 — ≈3h'},
+        {fr:"Sessions Aonic de mars (18-26/03)", en:"March Aonic sessions (Mar 18-26)", status:'done', date:'18-26/03 — ~40h'},
+        {fr:"Header : moitié transparente, ligne blanche mobile, ancien header (tickets ouverts)", en:"Header: half transparent, mobile white line, old header (open tickets)", status:'new', date:'15/06'}
+      ]
+    },
+    {
+      tag:'06', name:'Pharmacie métier', period:'Avril — Juin 2026', hours:'≈79h',
+      desc:{fr:"Étude de cadrage et rédaction du cahier des charges pour un logiciel métier de gestion de pharmacie. Plusieurs semaines consacrées à la recherche réglementaire et à la conception fonctionnelle, avec un point DG.", en:"Scoping study and specification drafting for a pharmacy management business software. Several weeks dedicated to regulatory research and functional design, including a session with the CEO."},
+      tasks:[
+        {fr:"Recherches sur les pharmacies métier (démarrage avec BTP)", en:"Pharmacy business research (started alongside BTP)", status:'done', date:'08/04'},
+        {fr:"Sessions de recherche approfondies", en:"In-depth research sessions", status:'done', date:'09-15/04 — ~40h'},
+        {fr:"Sessions avec point DG", en:"Sessions with a CEO check-in", status:'done', date:'23-24/04'},
+        {fr:"Sessions de fin avril (29-30/04)", en:"Late-April sessions (Apr 29-30)", status:'done', date:'29/04 — ~16h'},
+        {fr:"Reprises de juin (3 et 5/06) et point pharmacie métier", en:"June follow-ups (Jun 3 and 5) and pharmacy check-in", status:'done', date:'03-05/06'}
+      ]
+    },
+    {
+      tag:'07', name:'BTP', period:'Mars — Avril 2026', hours:'≈36h',
+      desc:{fr:"Projet de suivi de chantiers BTP mené avec Anne : plusieurs semaines de travail sur la modélisation et l'interface, conclues par la finalisation du copyright.", en:"Construction-site tracking project with Anne: several weeks on modeling and interface, concluded with the copyright finalization."},
+      tasks:[
+        {fr:"Projet BTP avec Anne (sessions de mars)", en:"BTP project with Anne (March sessions)", status:'done', date:'17-18/03'},
+        {fr:"Sessions BTP (24-30/03)", en:"BTP sessions (Mar 24-30)", status:'done', date:'24-30/03 — ~20h'},
+        {fr:"Finalisation du copyright", en:"Copyright finalization", status:'done', date:'03/04 — 1h'},
+        {fr:"Sessions d'avril (7/04)", en:"April sessions (Apr 7)", status:'done', date:'07/04'}
+      ]
+    },
+    {
+      tag:'08', name:'Formation GP / Site ERP', period:'Jan-Fév + Avril 2026', hours:'≈94h',
+      desc:{fr:"Formation à la gestion de projet (trois semaines en avril, avec présentation et session Aonic) et intégration du site ERP Consulting (janvier-février), avec les retours d'Od et de Fz.", en:"Project-management training (three weeks in April, with a presentation and an Aonic session) and the ERP Consulting site integration (January-February), with Od's and Fz's feedback rounds."},
+      tasks:[
+        {fr:"Site ERP Consulting — intégration initiale", en:"ERP Consulting site — initial integration", status:'done', date:'29-30/01'},
+        {fr:"Site ERP — modifications", en:"ERP site — modifications", status:'done', date:'12/02 — 4h'},
+        {fr:"Retours Od (18, 20/02) et retours Fz (23/02 + ticket 3.5h)", en:"Od feedback (Feb 18, 20) and Fz feedback (Feb 23 + 3.5h ticket)", status:'done', date:'18-24/02'},
+        {fr:"Formation GP — questions à toute l'équipe, point avec Mr CC", en:"PM training — questions to the whole team, session with Mr CC", status:'done', date:'01/04'},
+        {fr:"Formation GP — sessions intensives", en:"PM training — intensive sessions", status:'done', date:'16-24/04 — ~55h'},
+        {fr:"Présentation et entretien, session avec Aonic", en:"Presentation and interview, Aonic session", status:'done', date:'21/04'}
+      ]
+    },
+    {
+      tag:'09', name:'Cagecfi', period:'Mai — Juillet 2026', hours:'≈40h',
+      desc:{fr:"Nouveau projet cadré en fin d'année : génération des maquettes avec Mr Guy et Mr Felix fin mai, puis cadrage complet début juillet avec Anne — le chantier qui referme ce bilan.", en:"A new project scoped at the year's end: mockup generation with Mr Guy and Mr Felix in late May, then full scoping in early July with Anne — the workstream that closes this review."},
+      tasks:[
+        {fr:"Point sur le site CAGECFI avec Mr Guy et Mr Felix", en:"CAGECFI site session with Mr Guy and Mr Felix", status:'done', date:'28/05'},
+        {fr:"Génération de maquettes", en:"Mockup generation", status:'done', date:'28-29/05 — ~8h'},
+        {fr:"Début du cadrage avec Anne", en:"Scoping kickoff with Anne", status:'done', date:'01/07'},
+        {fr:"Cadrage (sessions quotidiennes) et travail sur Inedit", en:"Scoping (daily sessions) and work on Inedit", status:'progress', date:'02-06/07 — ~25h'}
+      ]
+    },
+    {
+      tag:'10', name:'Autres chantiers', period:'Janvier — Juin 2026', hours:'≈80h',
+      desc:{fr:"Le reste du terrain couvert : site de lampe avec Ak, site noir JA, projet Studio, Navi Togo, Revolt, TP React et l'audit du site Aonic.", en:"The rest of the ground covered: the lamp site with Ak, the JA dark site, the Studio project, Navi Togo, Revolt, a React exercise and the Aonic site audit."},
+      tasks:[
+        {fr:"Site de lampe avec Ak (janvier) puis ticket Lamp (11/06)", en:"Lamp site with Ak (January) then a Lamp ticket (Jun 11)", status:'done', date:'27-28/01 + 11/06 — ~20h'},
+        {fr:"Site noir (JA) : sessions de janvier-février", en:"Dark site (JA): January-February sessions", status:'done', date:'19/01 + 04-06/02 — ~26h'},
+        {fr:"TP React — dynamisation", en:"React exercise — dynamisation", status:'done', date:'03/02 + 09/02 — ~13h'},
+        {fr:"Projet Studio : prise en main de l'outil, génération du site, finalisation de la maquette, bouton de configuration", en:"Studio project: tool onboarding, site generation, mockup finalization, configuration button", status:'done', date:'01-03/04 — ~15h'},
+        {fr:"Navi Togo", en:"Navi Togo", status:'done', date:'14/04 — ~8h'},
+        {fr:"Audit du site Aonic", en:"Aonic site audit", status:'done', date:'30/04 — 2h'},
+        {fr:"Revolt : clone du projet, pull, nouvelle branche, résolution des erreurs", en:"Revolt: project clone, pull, new branch, error resolution", status:'done', date:'30/04 — 3h'}
+      ]
+    }
+  ]
+};
+PERSON.tickets = window.TICKETS;
+PERSON.advanced = {"tiles": [{"num": "121", "fr": "Jours actifs tracés", "en": "Active days tracked", "note": "Le record de l’équipe.", "noteEn": "The team record."}, {"num": "8,0 h", "fr": "Moyenne par jour loggé", "en": "Average per logged day"}, {"num": "76 %", "fr": "Tickets avec temps saisi", "en": "Tickets with logged time", "note": "47 tickets sur 62 — la meilleure saisie de l’équipe.", "noteEn": "47 of 62 tickets — the team’s best logging rate."}], "estimation": {"data": [6, 31, 10]}, "collabs": [{"n": "Felix / Fz", "d": "×26"}, {"n": "Od", "d": "×9"}, {"n": "Mr Cc", "d": "×7"}, {"n": "Anne", "d": "×7"}, {"n": "Irène", "d": "×7"}, {"n": "Ak", "d": "×5"}, {"n": "Time", "d": "×4"}, {"n": "Mr T2", "d": "×3"}, {"n": "Mr Guy", "d": "×2"}, {"n": "Jordan", "d": "×2"}], "incidents": [{"n": "Coupures d'électricité", "d": "×9"}, {"n": "Wifi / connexion", "d": "×1"}, {"n": "Pluie, portail…", "d": "×1"}]};
+
+renderBilan(PERSON);
+</script>
+</body>
+</html>

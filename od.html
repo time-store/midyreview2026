@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr" data-lang="fr" data-person="od">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TELOU ODED — Bilan 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/app.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <a class="back-link" href="index.html"><span data-fr>← Équipe</span><span data-en>← Team</span></a>
+      O. <strong>TELOU</strong>&nbsp;<span data-fr>· Bilan 2026</span><span data-en>· Year in Review 2026</span>
+    </div>
+    <div class="toggles">
+      <div class="lang-toggle">
+        <button id="btn-fr" onclick="setLang('fr')">FR</button>
+        <button id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button id="btn-theme" class="theme-toggle" onclick="toggleTheme()" title="Thème">☾</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow"><span data-fr>Janvier — Juillet 2026</span><span data-en>January — July 2026</span></div>
+    <h1 class="hero-title">
+      <span data-fr>Sept mois de <em>backend</em>, d'apprentissage méthodique et d'APIs mises en production.</span>
+      <span data-en>Seven months of <em>backend</em> work, methodical learning, and APIs shipped to production.</span>
+    </h1>
+    <p class="hero-sub">
+      <span data-fr>TELOU ODED — Développeur Backend. Ce document retrace, projet par projet, le travail accompli entre janvier et juillet 2026 chez Digitaleurs : dynamisations Payload, application RH Ara (upload de documents, paie classique), APIs GraphQL Hoteli, et une montée en compétence continue rigoureusement tracée — chaque tâche avec son temps estimé et son temps réel.</span>
+      <span data-en>TELOU ODED — Backend Developer. This document traces, project by project, the work accomplished between January and July 2026 at Digitaleurs: Payload dynamisations, the Ara HR application (document upload, payroll), Hoteli GraphQL APIs, and rigorously tracked continuous skill-building — every task logged with estimated versus actual time.</span>
+    </p>
+    <div class="hero-meta" id="hero-meta"></div>
+  </section>
+
+  <section class="section" id="overview">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title"><span data-fr>Vue d'ensemble</span><span data-en>Overview</span></h2>
+      <p class="section-desc">
+        <span data-fr>Répartition du temps suivi et volume de tickets traités sur les sept mois. La feuille de temps d'Oded est l'une des plus rigoureuses de l'équipe : presque chaque créneau contient un temps estimé et un temps réel.</span>
+        <span data-en>Distribution of tracked time and volume of tickets handled across the seven months. Oded's timesheet is among the team's most rigorous: nearly every slot carries both an estimated and an actual time.</span>
+      </p>
+    </div>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3><span data-fr>Heures loggées par mois</span><span data-en>Hours logged per month</span></h3>
+        <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition du temps par projet</span><span data-en>Time by project</span></h3>
+        <div class="chart-wrap"><canvas id="chartProjects"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tickets Redmine par projet</span><span data-en>Redmine tickets per project</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTickets"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Statut des 25 tickets</span><span data-en>Status of the 25 tickets</span></h3>
+        <div class="chart-wrap short"><canvas id="chartStatus"></canvas></div>
+      </div>
+    </div>
+    <div class="method-note">
+      <span data-fr><strong>Note de lecture :</strong> les heures proviennent de la feuille de suivi quotidienne. Quand un ticket Redmine n'a pas de temps passé renseigné, son <strong>temps estimé</strong> est utilisé et marqué « ≈ ». Une grande partie du travail (formations, Ara, points) n'a pas donné lieu à des tickets Redmine — la feuille de temps en garde la trace complète. Le poste « Formation » inclut aussi les imprévus loggés tels quels (coupures d'électricité, formalités).</span>
+      <span data-en><strong>How to read this:</strong> hours come from the daily tracking sheet. When a Redmine ticket has no logged time, its <strong>estimated time</strong> is used and flagged with "≈". A large share of the work (training, Ara, check-ins) has no Redmine ticket — the timesheet keeps the full record. The "Training" bucket also includes incidents logged as-is (power cuts, formalities).</span>
+    </div>
+  </section>
+
+  <section class="section" id="timeline">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title"><span data-fr>Le journal de l'année</span><span data-en>The year's log</span></h2>
+      <p class="section-desc"><span data-fr>Mois par mois, les chantiers ouverts et les temps forts.</span><span data-en>Month by month, the projects in motion and the highlights.</span></p>
+    </div>
+    <div class="log" id="log"></div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title"><span data-fr>Projets en détail</span><span data-en>Projects in detail</span></h2>
+      <p class="section-desc"><span data-fr>Chaque chantier, son contexte, et les tâches marquantes issues du suivi Redmine et de la feuille de temps.</span><span data-en>Each project, its context, and notable tasks drawn from Redmine tracking and the timesheet.</span></p>
+    </div>
+    <div class="proj-list" id="proj-list"></div>
+  </section>
+
+  <section class="section" id="tickets">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="section-title"><span data-fr>Tous les tickets Redmine</span><span data-en>All Redmine tickets</span></h2>
+      <p class="section-desc"><span data-fr>La liste complète, filtrable par projet, statut et priorité. Le temps affiché est le temps passé ; « ≈ » indique le temps estimé utilisé à défaut, « — » un ticket traité sans saisie de temps.</span><span data-en>The complete list, filterable by project, status and priority. The time shown is time spent; "≈" marks estimated time used as fallback, "—" a ticket handled without time entry.</span></p>
+    </div>
+    <div class="ticket-controls">
+      <input type="search" id="t-search" placeholder="Rechercher… / Search…">
+      <select id="t-proj"><option value="">Projet / Project</option></select>
+      <select id="t-status"><option value="">Statut / Status</option></select>
+      <select id="t-prio"><option value="">Priorité / Priority</option></select>
+      <span class="ticket-count" id="t-count"></span>
+    </div>
+    <div class="ticket-table-wrap" id="ticket-table"></div>
+  </section>
+
+  <section class="section" id="advanced">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="section-title"><span data-fr>Statistiques avancées</span><span data-en>Advanced statistics</span></h2>
+      <p class="section-desc"><span data-fr>Rythme de travail, tickets les plus lourds, précision d'estimation, collaborations et aléas du terrain — calculés depuis la feuille de temps et les tickets. Quand une statistique n'apparaît pas ici, c'est que les données ne permettent pas de la calculer honnêtement.</span><span data-en>Work rhythm, heaviest tickets, estimation accuracy, collaborations and field hazards — computed from the timesheet and tickets. When a statistic is missing here, the data doesn't allow computing it honestly.</span></p>
+    </div>
+    <div class="stat-tiles" id="adv-tiles"></div>
+    <div class="charts-grid" style="margin-top:24px;grid-template-columns:1fr;">
+      <div class="chart-card">
+        <h3><span data-fr>Top 10 des tickets les plus lourds (« ≈ » = temps estimé)</span><span data-en>Top 10 heaviest tickets ("≈" = estimated time)</span></h3>
+        <div class="chart-wrap tall"><canvas id="chartTop"></canvas></div>
+      </div>
+    </div>
+    <div class="charts-grid three" style="margin-top:24px;">
+      <div class="chart-card">
+        <h3><span data-fr>Tâches vs Bugs</span><span data-en>Tasks vs Bugs</span></h3>
+        <div class="chart-wrap short"><canvas id="chartTracker"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Répartition par priorité</span><span data-en>Breakdown by priority</span></h3>
+        <div class="chart-wrap short"><canvas id="chartPrio"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3><span data-fr>Estimé vs réel — 294 créneaux</span><span data-en>Estimated vs actual — 294 slots</span></h3>
+        <div class="chart-wrap short"><canvas id="chartEstim"></canvas></div>
+      </div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Collaborations les plus fréquentes (mentions dans la feuille de temps)</span><span data-en>Most frequent collaborations (mentions in the timesheet)</span></h3>
+      <div class="proj-chips" id="adv-collabs"></div>
+    </div>
+    <div class="adv-block">
+      <h3><span data-fr>Aléas du terrain</span><span data-en>Field hazards</span></h3>
+      <div class="proj-chips" id="adv-incidents"></div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="section-title"><span data-fr>Compétences mobilisées</span><span data-en>Skills exercised</span></h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>Backend</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Node.js</span><span class="skill-tag">GraphQL</span><span class="skill-tag">NestJS</span><span class="skill-tag">Prisma</span><span class="skill-tag">Supabase</span><span class="skill-tag">MongoDB</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Front & Mobile</span><span data-en>Front & Mobile</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Next.js</span><span class="skill-tag">React Native</span><span class="skill-tag">Upload de fichiers</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>DevOps</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Serveurs VPS</span><span class="skill-tag">Déploiement</span><span class="skill-tag">Compilation Windows</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Métier & ERP</span><span data-en>Business & ERP</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">SAGE 100</span><span class="skill-tag">Paie classique</span><span class="skill-tag">Estimations projets</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>CMS</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Payload CMS</span><span class="skill-tag">Dynamisation back</span><span class="skill-tag">Shopify (back)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4><span data-fr>Outils & méthode</span><span data-en>Tools & method</span></h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Git</span><span class="skill-tag">Redmine</span><span class="skill-tag">Claude Code</span><span class="skill-tag">Estimé vs réel</span><span class="skill-tag">Daily standups</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="closing">
+    <div class="closing">
+      <p>
+        <span data-fr>Estimer, faire, mesurer, recommencer — une année construite créneau par créneau, où chaque heure annoncée a été confrontée à l'heure réelle.</span>
+        <span data-en>Estimate, build, measure, repeat — a year built slot by slot, where every promised hour was checked against the actual one.</span>
+      </p>
+      <div class="sign">— TELOU ODED</div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <span data-fr>Document généré à partir du suivi Redmine et de la feuille de temps, janvier–juillet 2026.</span>
+  <span data-en>Document generated from Redmine tracking and the timesheet, January–July 2026.</span>
+</footer>
+
+<script src="assets/tickets-od.js"></script>
+<script>
+const PERSON = {
+  heroMeta: [
+    {num:'808h', fr:'Heures loggées', en:'Hours logged'},
+    {num:'25', fr:'Tickets Redmine', en:'Redmine tickets'},
+    {num:'≈87h', fr:'Temps sur tickets', en:'Ticket time'},
+    {num:'10+', fr:'Projets couverts', en:'Projects covered'}
+  ],
+
+  monthly: [
+    {m:'Jan', mEn:'Jan', hours:123},
+    {m:'Fév', mEn:'Feb', hours:123},
+    {m:'Mar', mEn:'Mar', hours:79},
+    {m:'Avr', mEn:'Apr', hours:151},
+    {m:'Mai', mEn:'May', hours:129},
+    {m:'Juin', mEn:'Jun', hours:170},
+    {m:'Juil', mEn:'Jul', hours:34}
+  ],
+
+  projectHours: [
+    {name:'Formation continue', hours:348},
+    {name:'Points & réunions', hours:140},
+    {name:'Ara', hours:121},
+    {name:'Oloid (back)', hours:49},
+    {name:'Aegles (back)', hours:42},
+    {name:'Hoteli', hours:41},
+    {name:'Elementor / Akurat', hours:33},
+    {name:'SGPC', hours:14},
+    {name:'Aonic', hours:10},
+    {name:'Autres', hours:10}
+  ],
+
+  ticketsPerProject: [
+    {proj:'Oloid', n:14},
+    {proj:'Aegles', n:6},
+    {proj:'Hoteli', n:5}
+  ],
+
+  statusCounts: {
+    fr:['Résolu / Fermé','En cours','Nouveau'],
+    en:['Resolved / Closed','In progress','New'],
+    data:[22,1,2]
+  },
+
+  log: [
+    {
+      month:'Janvier', monthEn:'January',
+      note:{fr:"Définition des plateaux de chacun, modifications sur Aonic, page de listing de talents du projet Elementor (#12604, quatre jours), tickets Hoteli (création du modèle Dépense et de ses résolveurs — 5h, ingrédients sur plats, test du formulaire de création de plat), et démarrage des recherches Prisma + GraphQL + Supabase.", en:"Team scopes defined, Aonic modifications, the Elementor project's talent listing page (#12604, four days), Hoteli tickets (Expense model and resolvers creation — 5h, dish ingredients, dish creation form testing), and kickoff of Prisma + GraphQL + Supabase research."},
+      projects:[{n:'Elementor #12604', d:'~33h'},{n:'Hoteli', d:'~16h'},{n:'Formation', d:'~30h'},{n:'Points', d:'~20h'}]
+    },
+    {
+      month:'Février', monthEn:'February',
+      note:{fr:"Formation intensive : pratique des serveurs VPS, Next.js en continu, formation serveur ; génération des interfaces de CJET (10h) ; structure API pour les réservations d'espaces Hoteli (#12684, 16h estimées). Mois marqué par les coupures d'électricité et un déménagement — tout est tracé dans la feuille.", en:"Intensive training: hands-on VPS servers, continuous Next.js, server training; CJET interface generation (10h); Hoteli spaces-booking API structure (#12684, 16h estimated). A month marked by power cuts and an office move — all logged in the sheet."},
+      projects:[{n:'Formation VPS / Next.js', d:'~70h'},{n:'Hoteli #12684', d:'~16h'},{n:'CJET', d:'~10h'}]
+    },
+    {
+      month:'Mars', monthEn:'March',
+      note:{fr:"Formation Nest.js et React Native, recherches SAGE 100 (préparation de la comptabilité), estimations REVOLT et Hoteli, compilation d'Ara sur Windows pour Axe (3h30) — le premier contact avec l'application qui occupera le reste de l'année.", en:"Nest.js and React Native training, SAGE 100 research (accounting groundwork), REVOLT and Hoteli estimations, Ara compiled on Windows for Axe (3.5h) — first contact with the application that would fill the rest of the year."},
+      projects:[{n:'Formation Nest.js / RN', d:'~50h'},{n:'SAGE 100', d:'~11h'},{n:'Ara', d:'~4h'},{n:'Estimations', d:'~6h'}]
+    },
+    {
+      month:'Avril', monthEn:'April',
+      note:{fr:"Prise en main de Revolt, React Native en continu, résolution de problèmes sur Ara (pointage — 3h), initiation à Claude Code (23/04), début de la migration de l'API d'Ara vers Nest.js, estimation et création des tickets Oloid, entretien de Mr Lionel, point sur la gestion de projet au sein de Digitaleurs.", en:"Revolt onboarding, continuous React Native, Ara issue resolution (clock-in — 3h), Claude Code initiation (Apr 23), start of the Ara API migration to Nest.js, Oloid ticket estimation and creation, Mr Lionel's interview, session on project management at Digitaleurs."},
+      projects:[{n:'Formation RN / Revolt', d:'~80h'},{n:'Ara', d:'~14h'},{n:'Migration Nest.js', d:'~7h'},{n:'Oloid (estimation)', d:'~4h'}]
+    },
+    {
+      month:'Mai', monthEn:'May',
+      note:{fr:"Ara : implémentation complète de l'upload de documents et de photo de profil (frontend + backend, plusieurs sessions) et bouton de navigation. Oloid : toute la dynamisation back — HP Blocks 2 à 5, About, About2, FAQ, Cookie, Footer, PDP — soit 20 tickets — conclue par le déploiement du site le 29/05.", en:"Ara: full document and profile-photo upload implementation (frontend + backend, multiple sessions) plus the navigation button. Oloid: the entire back-office dynamisation — HP Blocks 2-5, About, About2, FAQ, Cookie, Footer, PDP — 20 tickets — capped by the site deployment on May 29."},
+      projects:[{n:'Oloid (back)', d:'~45h'},{n:'Ara (upload)', d:'~30h'},{n:'Hoteli (test API Claude)', d:'~3h'},{n:'SAGE 100', d:'~8h'}]
+    },
+    {
+      month:'Juin', monthEn:'June',
+      note:{fr:"Ara — Paie classique, le gros chantier du mois : recherches, points avec Mr Guy et Mr T2, implémentation par étapes et tests de la première partie. Aegles back : footer, key ingredients, subscription bar, header desktop/mobile, correction des URLs compromises. Daily standup chaque matin, point avec une junior sur son projet de soutenance.", en:"Ara — classic payroll, the month's big workstream: research, sessions with Mr Guy and Mr T2, step-by-step implementation and first-part testing. Aegles back: footer, key ingredients, subscription bar, desktop/mobile header, compromised-URL fix. Daily standup every morning, plus a session with a junior on her defense project."},
+      projects:[{n:'Ara — Paie', d:'~55h'},{n:'Aegles (back)', d:'~40h'},{n:'Points & daily', d:'~35h'}]
+    },
+    {
+      month:'Juillet', monthEn:'July',
+      note:{fr:"Démarrage de SGPC (sessions quotidiennes), poursuite de la paie classique Ara, daily standups et déménagement.", en:"SGPC kickoff (daily sessions), Ara classic payroll continued, daily standups and an office move."},
+      projects:[{n:'SGPC', d:'~14h'},{n:'Ara — Paie', d:'~8h'},{n:'Points', d:'~8h'}]
+    }
+  ],
+
+  projects: [
+    {
+      tag:'01', name:'Ara — Application RH', period:'Mars — Juillet 2026', hours:'≈121h',
+      desc:{fr:"Application RH interne (React Native + API Node). Le fil rouge de l'année : de la compilation Windows aux corrections de pointage, puis deux chantiers de fond — l'upload de documents et de photos de profil (frontend + backend), et l'implémentation de la paie classique, menée avec des points réguliers avec Mr Guy et Mr T2.", en:"Internal HR application (React Native + Node API). The year's common thread: from Windows compilation to clock-in fixes, then two deep workstreams — document and profile-photo upload (frontend + backend), and classic payroll implementation, driven by regular sessions with Mr Guy and Mr T2."},
+      tasks:[
+        {fr:'Compilation d’Ara sur Windows pour Axe', en:'Ara compiled on Windows for Axe', status:'done', date:'31/03 — 3h30'},
+        {fr:'Réglage d’un problème sur Ara', en:'Ara issue resolution', status:'done', date:'08/04 — 2h'},
+        {fr:'Résolution d’un problème sur le pointage', en:'Clock-in issue resolution', status:'done', date:'30/04 — 3h'},
+        {fr:'Migration de l’API d’Ara sur Nest.js', en:'Ara API migration to Nest.js', status:'progress', date:'23-24/04 — ~5h'},
+        {fr:'Connexion de l’API Nest.js d’Ara avec le client', en:'Connecting Ara’s Nest.js API to the client', status:'done', date:'05/05 — 3h'},
+        {fr:'Implémentation de l’upload de documents dans Ara (multi-sessions)', en:'Document upload implementation in Ara (multi-session)', status:'done', date:'07-08/05 — ~10h'},
+        {fr:'Upload de documents et photo de profil, frontend et backend', en:'Document and profile-photo upload, frontend and backend', status:'done', date:'11-12/05 — ~10h'},
+        {fr:'Correction sur l’upload de photo — purge des anciennes photos du serveur', en:'Photo upload fix — old photos purged from the server', status:'done', date:'13-15/05 — ~3h'},
+        {fr:'Implémentation du bouton de navigation (design revu avec Mr Felix)', en:'Navigation button implementation (design reviewed with Mr Felix)', status:'done', date:'12-13/05 — ~5h'},
+        {fr:'Ara : Paie classique — recherches et cadrage avec Mr Guy et Mr T2', en:'Ara: classic payroll — research and scoping with Mr Guy and Mr T2', status:'done', date:'01/06'},
+        {fr:'Ara : Paie classique — implémentation par étapes', en:'Ara: classic payroll — step-by-step implementation', status:'progress', date:'01-09/06 — ~40h'},
+        {fr:'Test de la 1ère partie du travail de la paie classique', en:'Testing of the payroll work’s first part', status:'done', date:'11/06 — 1h'},
+        {fr:'Reprise de la paie classique (fin juin — juillet)', en:'Payroll work resumed (late June — July)', status:'progress', date:'29/06-06/07 — ~12h'},
+        {fr:'Tests sur Ara', en:'Ara testing', status:'done', date:'13/05 — 1h'}
+      ]
+    },
+    {
+      tag:'02', name:'Formation continue', period:'Janvier — Juin 2026', hours:'≈250h',
+      desc:{fr:"Un programme d'apprentissage structuré sur toute l'année, tracé heure par heure avec estimé et réel : bases de données modernes, frameworks backend, mobile, serveurs — le socle qui a permis les chantiers Ara, Oloid et Aegles du second semestre.", en:"A structured learning program across the whole year, tracked hour by hour with estimates and actuals: modern databases, backend frameworks, mobile, servers — the foundation that enabled the Ara, Oloid and Aegles workstreams of the second half."},
+      tasks:[
+        {fr:'Recherche sur Prisma + GraphQL + Supabase', en:'Prisma + GraphQL + Supabase research', status:'done', date:'19-27/01 — ~30h'},
+        {fr:'Application de PayloadCMS dans un projet', en:'PayloadCMS applied to a project', status:'done', date:'26-30/01 — ~10h'},
+        {fr:'Recherche sur les serveurs VPS puis pratique (config, déploiement)', en:'VPS server research then practice (config, deployment)', status:'done', date:'29/01-09/02 — ~25h'},
+        {fr:'Pratique de Next.js (sessions intensives)', en:'Next.js practice (intensive sessions)', status:'done', date:'11/02-17/04 — ~80h'},
+        {fr:'Formation serveur', en:'Server training', status:'done', date:'18-20/02 — ~9h'},
+        {fr:'Formation Nest.js', en:'Nest.js training', status:'done', date:'06/03-02/04 — ~25h'},
+        {fr:'Formation React Native', en:'React Native training', status:'done', date:'11/03-30/04 — ~60h'},
+        {fr:'Recherche sur SAGE 100 (préparation comptabilité)', en:'SAGE 100 research (accounting groundwork)', status:'done', date:'09/03-06/05 — ~20h'},
+        {fr:'Google Workspace : tour des possibilités', en:'Google Workspace: capabilities overview', status:'done', date:'03-05/03 — ~6h'},
+        {fr:'Initiation à Claude Code', en:'Claude Code initiation', status:'done', date:'23/04 — 3h'},
+        {fr:'Prise en main de Revolt', en:'Revolt onboarding', status:'done', date:'02-03/04 — ~12h'},
+        {fr:'Génération des interfaces de CJET', en:'CJET interface generation', status:'done', date:'10/02 — 10h'}
+      ]
+    },
+    {
+      tag:'03', name:'Oloid — Dynamisation back', period:'Mai 2026', hours:'≈49h · 20 tickets',
+      desc:{fr:"Pendant qu'Ak et Tina tenaient le front, Oded a pris en charge l'intégralité de la dynamisation back-office du site Oloid sous Payload : vingt tickets en trois semaines, du header au cookie banner, conclus par le déploiement du 29 mai.", en:"While Ak and Tina held the front, Oded took charge of the entire Payload back-office dynamisation of the Oloid site: twenty tickets in three weeks, from header to cookie banner, capped by the May 29 deployment."},
+      tasks:[
+        {fr:'Récupération du projet, création des collections, compréhension du projet', en:'Project pickup, collections creation, project comprehension', status:'done', date:'15/05 — 3h'},
+        {fr:'Back - HP Block 2 - Workplace Retail Hospitality', en:'Back - HP Block 2 - Workplace Retail Hospitality', status:'done', date:'11/05 — 2h'},
+        {fr:'Back - HP Block 3 - The client and design come first', en:'Back - HP Block 3 - The client and design come first', status:'done', date:'18/05 — 2h30'},
+        {fr:'Back - HP Block 4 - Four reasons to work with us', en:'Back - HP Block 4 - Four reasons to work with us', status:'done', date:'28/05 — 4h'},
+        {fr:'Back - HP Block 5 - Testimonials', en:'Back - HP Block 5 - Testimonials', status:'done', date:'12/05 — 5h'},
+        {fr:'Back - About Block 1, Block 2 « Who we are », Block 4 « Words from our clients »', en:'Back - About Block 1, Block 2 “Who we are”, Block 4 “Words from our clients”', status:'done', date:'15-29/05 — ~6h'},
+        {fr:'Back - About2 Block 1 + Block 2 « Our delivery process - Preconstruction »', en:'Back - About2 Block 1 + Block 2 “Our delivery process - Preconstruction”', status:'done', date:'18-28/05 — 7h30'},
+        {fr:'Back - FAQ - Dynamisation', en:'Back - FAQ - Dynamisation', status:'done', date:'19-20/05 — 2h'},
+        {fr:'Back - Page 5 - Detail page white - Dynamisation', en:'Back - Page 5 - Detail page white - Dynamisation', status:'done', date:'18/05 — 7h15'},
+        {fr:'Back - Page 5 - PDP « We turn vision into reality »', en:'Back - Page 5 - PDP “We turn vision into reality”', status:'done', date:'19/05 — 0h30'},
+        {fr:'Back - Cookie', en:'Back - Cookie', status:'done', date:'13/05 — 4h45'},
+        {fr:'Back - Page 4 « Four reasons to work with us »', en:'Back - Page 4 “Four reasons to work with us”', status:'new', date:'27/05 — ≈1h'},
+        {fr:'Tests sur Oloid', en:'Oloid testing', status:'done', date:'26/05 — 5h'},
+        {fr:'Travail avec Ak sur les tickets restants', en:'Work with Ak on the remaining tickets', status:'done', date:'29/05 — 2h45'},
+        {fr:'Déploiement d’Oloid', en:'Oloid deployment', status:'done', date:'29/05 — 3h40'},
+        {fr:'Estimation + création des tickets Oloid', en:'Oloid ticket estimation + creation', status:'done', date:'04/05 — 4h'}
+      ]
+    },
+    {
+      tag:'04', name:'Aegles — Back', period:'Juin 2026', hours:'≈42h · 6 tickets',
+      desc:{fr:"Reprise du back du site Shopify Aegles en juin : dynamisations de composants, corrections d'URLs cassées et le header desktop/mobile — le ticket le plus lourd du chantier (8h estimées), mené sur plusieurs jours malgré des problèmes de connexion au store.", en:"June takeover of the Aegles Shopify back-office: component dynamisations, broken-URL fixes and the desktop/mobile header — the workstream's heaviest ticket (8h estimated), carried over several days despite store connection issues."},
+      tasks:[
+        {fr:'Récupération du projet Aegles et démarrage (problème de connexion au store)', en:'Aegles project pickup and start (store connection issue)', status:'done', date:'11/06 — 4h'},
+        {fr:'Back - PDP Block 6 - Key ingredients sections Dynamisation', en:'Back - PDP Block 6 - Key ingredients sections Dynamisation', status:'done', date:'12-18/06 — ≈1.5h + sessions'},
+        {fr:'Back - Footer Dynamisation', en:'Back - Footer Dynamisation', status:'done', date:'15/06 — ≈1h'},
+        {fr:'D_AMBASSADOR - Block 1 Dynamisation', en:'D_AMBASSADOR - Block 1 Dynamisation', status:'done', date:'15/06 — ≈2h'},
+        {fr:'URLs compromises : /collections/frontpage et /products menaient vers des pages bug', en:'Compromised URLs: /collections/frontpage and /products led to broken pages', status:'done', date:'16/06 — ≈1h'},
+        {fr:'Back - PDP - Subscription bar', en:'Back - PDP - Subscription bar', status:'done', date:'18-23/06 — ≈4h'},
+        {fr:'Back - Desktop - Mobile - Header', en:'Back - Desktop - Mobile - Header', status:'progress', date:'24-25/06 — ≈8h'},
+        {fr:'Correction d’irrégularités sur Aegles (point avec Mr T2)', en:'Aegles irregularity fixes (session with Mr T2)', status:'done', date:'30/06 — 2h'}
+      ]
+    },
+    {
+      tag:'05', name:'Hoteli', period:'Janvier — Février 2026', hours:'≈41h',
+      desc:{fr:"Contribution backend à la plateforme de gestion hôtelière : modèle de données des dépenses, fonctionnalités du restaurant, et la structure API des réservations d'espaces (MICE).", en:"Backend contribution to the hotel management platform: expense data model, restaurant features, and the spaces-booking (MICE) API structure."},
+      tasks:[
+        {fr:'Back - Création du Model Dépense et des Résolveurs', en:'Back - Expense Model and Resolvers creation', status:'done', date:'20/01 — 5h'},
+        {fr:'Ingrédients sur plats', en:'Dish ingredients', status:'done', date:'21/01 — 3h'},
+        {fr:'Test du formulaire de création de plat', en:'Dish creation form testing', status:'done', date:'21/01 — 3h'},
+        {fr:'Implémenter la sélection de client sur le formulaire de réservation de chambre', en:'Client selection on the room booking form', status:'done', date:'22/01'},
+        {fr:'API - Structure complète pour les réservations d’espaces', en:'API - Full structure for spaces bookings', status:'progress', date:'23-26/02 — ≈16h'},
+        {fr:'Hoteli : test de l’API de Claude', en:'Hoteli: Claude API testing', status:'done', date:'06/05 — 3h'}
+      ]
+    },
+    {
+      tag:'06', name:'Projet Elementor / Akurat', period:'Janvier 2026', hours:'≈33h',
+      desc:{fr:"Page de listing de talents du site Akurat (tâche #12604) : quatre jours d'intégration Elementor, avec estimations quotidiennes systématiquement tenues.", en:"The Akurat site's talent listing page (task #12604): four days of Elementor integration, with daily estimates consistently met."},
+      tasks:[
+        {fr:'Tâche #12604 - Page de listing de talents (sessions des 7, 8 et 9 janvier)', en:'Task #12604 - Talent listing page (Jan 7, 8, 9 sessions)', status:'done', date:'07-09/01 — ~26h'},
+        {fr:'Projet Elementor - Akurat (reprise)', en:'Elementor project - Akurat (follow-up)', status:'done', date:'15/01 — ~7h'}
+      ]
+    },
+    {
+      tag:'07', name:'SGPC', period:'Juillet 2026', hours:'≈14h',
+      desc:{fr:"Dernier chantier ouvert avant la clôture du bilan : sessions quotidiennes sur le projet SGPC début juillet.", en:"The last workstream opened before this review's close: daily SGPC sessions in early July."},
+      tasks:[
+        {fr:'SGPC — sessions quotidiennes', en:'SGPC — daily sessions', status:'progress', date:'02-07/07 — ~14h'}
+      ]
+    },
+    {
+      tag:'08', name:'Vie d\'équipe & encadrement', period:'Janvier — Juillet 2026', hours:'≈140h',
+      desc:{fr:"Une part importante de l'année : points quotidiens, estimations de projets (REVOLT, Oloid, Hoteli, pharmacie), dispatching Aonic/Aegles, accompagnement d'une junior sur son projet de soutenance, et présence dans les décisions de gestion de projet de Digitaleurs.", en:"A significant share of the year: daily check-ins, project estimations (REVOLT, Oloid, Hoteli, pharmacy), Aonic/Aegles dispatching, mentoring a junior on her defense project, and involvement in Digitaleurs' project management decisions."},
+      tasks:[
+        {fr:'Daily standups quotidiens (juin — juillet)', en:'Daily standups (June — July)', status:'done', date:'11/06-07/07'},
+        {fr:'Point sur la gestion de projet au sein de Digitaleurs', en:'Session on project management at Digitaleurs', status:'done', date:'21/04 — 1h'},
+        {fr:'Entretien de Mr Lionel', en:'Mr Lionel’s interview', status:'done', date:'21/04 — 1h'},
+        {fr:'Point avec l’équipe sur le dispatching d’Aonic et Aegles', en:'Team session on Aonic and Aegles dispatching', status:'done', date:'10/06 — 3h15'},
+        {fr:'Point avec une junior sur son projet de soutenance', en:'Session with a junior on her defense project', status:'done', date:'18/06 — 2h40'},
+        {fr:'Estimation REVOLT, estimation du site Hoteli, point général sur le projet de pharmacie', en:'REVOLT estimation, Hoteli site estimation, pharmacy project overview', status:'done', date:'10/03-10/04'},
+        {fr:'Points généraux réguliers avec Mr Cc et Mr T2', en:'Regular check-ins with Mr Cc and Mr T2', status:'done', date:'toute l’année / all year'}
+      ]
+    }
+  ]
+};
+PERSON.tickets = window.TICKETS;
+PERSON.advanced = {"tiles": [{"num": "103", "fr": "Jours actifs tracés", "en": "Active days tracked"}, {"num": "7,8 h", "fr": "Moyenne par jour loggé", "en": "Average per logged day"}, {"num": "64 %", "fr": "Tickets avec temps saisi", "en": "Tickets with logged time", "note": "16 tickets sur 25 — et la feuille logge tout le reste.", "noteEn": "16 of 25 tickets — and the timesheet logs everything else."}], "estimation": {"data": [83, 169, 42]}, "collabs": [{"n": "Mr T2", "d": "×19"}, {"n": "Mr Cc", "d": "×15"}, {"n": "Irène", "d": "×4"}, {"n": "Felix / Fz", "d": "×3"}, {"n": "Mr Guy", "d": "×3"}], "incidents": [{"n": "Coupures d'électricité", "d": "×28"}, {"n": "Wifi / connexion", "d": "×6"}, {"n": "Déménagements", "d": "×2"}, {"n": "Pluie, portail…", "d": "×2"}]};
+
+renderBilan(PERSON);
+</script>
+</body>
+</html>
